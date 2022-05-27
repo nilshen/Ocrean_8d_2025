@@ -51,12 +51,13 @@ In addition, this project will include
 - [ ] setting up the game view
 - [ ] setting up mouse move with bubble effect to follow
 
-`Tuesday`
+`Tuesday` 
 - [ ] setting up the 2D assets & music volumn function
 - [ ] setting up the theme function: day/night version
 
 `Wednesday` 
-- [ ] setting up the html & css 
+- [ ] add the list of score function for different items
+- [ ] polish the html & css 
 - [ ] polish up including README, live demo testing etc 
 
 `Thursday`
