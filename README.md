@@ -33,3 +33,30 @@ In addition, this project will include
 - Thursday Morning: Deploy to GitHub pages. If time, rewrite this proposal as a production README.
 
 ##### wireFrame (to be added) 
+
+
+##### To do list
+Friday afternoon & weekend
+- [ ] setting up the canvas game board
+- [ ] create moving objects:
+    - [ ] player: follow the mouse direction
+    - [ ] garbages: falling down randomly from the ceiling
+    - [ ] monsters: showed up randomly (not from the ceiling) 
+- [ ] setting up collision 
+- [ ] setting up collision function 
+    - [ ] player x garbage = score 
+    - [ ] garbage x monster = nothing (or maybe kill the monster?)
+    - [ ] player x monster = lose 1 life
+- [ ] setting up the game view
+- [ ] setting up mouse move with bubble effect to follow
+Tuesday
+- [ ] setting up the 2D assets & music volumn function
+- [ ] setting up the theme function: day/night version
+Wednesday 
+- [ ] setting up the html & css 
+- [ ] polish up including README, live demo testing etc 
+Thursday
+- [ ] if have time, setting up additional function:
+    - [ ] choose difficulty function
+    - [ ] choose the mouse effect
+    - [ ] choose the characters: Spongebob/Patrick Star

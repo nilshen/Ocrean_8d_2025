@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const canvas = document.getElementById('canvas1');
+    const canvas = document.getElementById('canvasMouse');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function drawCircle() {
-        ctx.fillStyle = 'blue';
-        // ctx.strokeStyle = 'white'
-        // ctx.lineWidth = 50;
-        ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
-        ctx.fill();
-        // ctx.stroke();
-    }
+    // function drawCircle() {
+    //     ctx.fillStyle = 'blue';
+    //     // ctx.strokeStyle = 'white'
+    //     // ctx.lineWidth = 50;
+    //     ctx.beginPath();
+    //     ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI * 2);
+    //     ctx.fill();
+    //     // ctx.stroke();
+    // }
 
     class Particle {
         constructor() {
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const dx = arr[i].x - arr[j].x;
                 const dy = arr[i].y - arr[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 100) {
+                if (distance < 50) {
                     ctx.beginPath();
                     ctx.strokeStyle = arr[i].color;
                     ctx.lineWidth = 0.2;
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         handleParticles();
-        hue += 2;
+        hue += 3;
         requestAnimationFrame(animate);
     }
     animate();
