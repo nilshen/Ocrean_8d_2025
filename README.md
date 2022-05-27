@@ -32,5 +32,4 @@ In addition, this project will include
 
 - Thursday Morning: Deploy to GitHub pages. If time, rewrite this proposal as a production README.
 
-#####
-wireFrame to be added 
+##### wireFrame (to be added) 
