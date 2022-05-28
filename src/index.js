@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasBoard.height = 800;
     const ctxBoard = canvasBoard.getContext('2d');
 
-    let gameFrame = 0;
+    // let gameFrame = 0;
     // const edgePosition = canvasBoard.getBoundingClientRect();
     // var background = new Image();
     // background.src = "./assets/SPONGEBOB.png";
@@ -116,51 +116,48 @@ document.addEventListener("DOMContentLoaded", () => {
         this.y += this.speedY;
     };
 
-    // function addGarbage() {
-    //     for (let i = 0; i < 20; i++) {
-    //         arrGarbage.push(new Garbage());
-    //     }
-    // }
+    function addGarbage() {
+        for (let i = 0; i < 20; i++) {
+            arrGarbage.push(new Garbage());
+        }
+    }
 
 //first try. code work but garbage disappear before hit the ground. 
+    function flowGarbage() {
+        for (let i = 0; i < arrGarbage.length; i++) {
+            arrGarbage[i].move();
+            arrGarbage[i].draw();
+        }
+
+        for (let j = 0; j < arrGarbage.length; j++) {
+            if (arrGarbage[j].y > canvasBoard.height) {
+                arrGarbage.splice(j, 1);    //should have been arrGarbage.splice(j, 1) not arrGarbage.splice(arrGarbage[j], 1)!!!!
+            }
+        }
+
+        while (arrGarbage.length < 8) {
+            arrGarbage.push(new Garbage());
+        }
+    }
+
     // function flowGarbage() {
+    //     if (gameFrame % 30 === 0) {
+    //         arrGarbage.push(new Garbage())
+    //     }
+
     //     for (let i = 0; i < arrGarbage.length; i++) {
-    //         arrGarbage[i].move();
-    //         arrGarbage[i].draw();
-    //     }
-
-    //     for (let j = 0; j < arrGarbage.length; j++) {
-    //         if (arrGarbage[j].y > canvasBoard.height) {
-    //             arrGarbage.splice(arrGarbage[j], 1);
-    //             j--;
-    //         }
-    //     }
-
-
-    //     while (arrGarbage.length < 8) {
-    //         arrGarbage.push(new Garbage());
+    //         arrGarbage[i].move()
+    //         arrGarbage[i].draw()
+    //         if (arrGarbage[i].y > canvasBoard.height) {
+    //             arrGarbage.splice(i, 1);
     //     }
     // }
-
-
-    function flowGarbage() {
-        if (gameFrame % 30 === 0) {
-            arrGarbage.push(new Garbage())
-        }
-
-        for (let i = 0; i < arrGarbage.length; i++) {
-            arrGarbage[i].move()
-            arrGarbage[i].draw()
-            if (arrGarbage[i].y > canvasBoard.height) {
-                arrGarbage.splice(i, 1);
-        }
-    }
-    }
+    // }
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
         flowGarbage();
-        gameFrame++;
+        // gameFrame++;
         requestAnimationFrame(animate);
     }
     animate();
