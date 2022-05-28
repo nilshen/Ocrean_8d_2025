@@ -12,15 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvasBoard = document.getElementById("canvasBoard");
     canvasBoard.width = 800;
     canvasBoard.height = 600;
+    
 
     const ctxBoard = canvasBoard.getContext('2d');
 
     var background = new Image();
-        background.src = "./assets/SPONGEBOB.png";
+    background.src = "./assets/SPONGEBOB.png";
 
-    background.onload = function(){
-    ctxBoard.drawImage(background.src,0,0);   
-}
+    background.onload = function () {
+        ctxBoard.drawImage(background.src, 0, 0);
+    };
 
     let arrGarbage = [];
 
@@ -45,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const dy = this.y - mouse.y;
 
         if (this.x !== mouse.x) {
-            this.x -= dx
+            this.x -= dx;
         }
         if (this.y !== mouse.y) {
-            this.y -= dy
+            this.y -= dy;
         }
-    }
+    };
 
     const player = new Player(300, 300, 30, "blue");
     player.draw();
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Monster
     function Monster() {
         this.x = Math.random() * canvasBoard.width;
-        this.y = Math.random() * (canvasBoard.height/2);
+        this.y = Math.random() * (canvasBoard.height / 2);
         this.radius = Math.random() + 30;
         this.speedX = Math.random() * 10;
         this.speedY = Math.random() * 10;
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Garbage
     function Garbage() {
         this.x = Math.random() * canvasBoard.width;
-        this.y = Math.random() //* canvasBoard.height;
+        this.y = Math.random(); //* canvasBoard.height;
         this.radius = Math.random() + 30;
         // this.speedX = Math.random() * 10;
         this.speedY = Math.random() * 3 + 2;
@@ -120,17 +121,17 @@ document.addEventListener("DOMContentLoaded", () => {
             arrGarbage[i].move();
             arrGarbage[i].draw();
         }
-        arrGarbage.filter((el)=> el.y > 0 )
+        arrGarbage.filter((el) => el.y > 0);
 
         if (arrGarbage.length < 5) {
-            arrGarbage.push(new Garbage())
+            arrGarbage.push(new Garbage());
         }
     }
-    console.log(arrGarbage)
+    console.log(arrGarbage);
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
-        
+
         handleGarbage();
         requestAnimationFrame(animate);
     }
@@ -138,4 +139,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    });
+});
