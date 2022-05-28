@@ -91,10 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //Garbage
     function Garbage() {
         this.x = Math.random() * canvasBoard.width;
-        this.y = Math.random(); //* canvasBoard.height;
-        this.radius = Math.random() + 30;
-        // this.speedX = Math.random() * 10;
-        this.speedY = Math.random() * 3 + 2;
+        //Commented this out because the garbage needs to fall from the ceiling;
+        this.y = 0 - 10 // Math.random() * canvasBoard.height; 
+        this.radius = 20;
+        this.speedX = (Math.random() * 10 - 4.5)/5;
+        this.speedY = Math.random() * 3 + 1;
     }
 
     Garbage.prototype.draw = function () {
@@ -105,25 +106,29 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     Garbage.prototype.move = function () {
-        // this.x += this.speedX;
+        this.x += this.speedX;
         this.y += this.speedY;
     };
 
-    function init() {
+    function addGarbage() {
         for (let i = 0; i < 13; i++) {
             arrGarbage.push(new Garbage());
         }
     }
-    init();
 
-    function handleGarbage() {
+    function flowGarbage() {
         for (let i = 0; i < arrGarbage.length; i++) {
             arrGarbage[i].move();
             arrGarbage[i].draw();
         }
-        arrGarbage.filter((el) => el.y > 0);
 
-        if (arrGarbage.length < 5) {
+        for (let i = 0; i < arrGarbage.length; i++) {
+            if (arrGarbage[i].y > 650) {
+                arrGarbage.splice(arrGarbage[i], 1)
+            }
+        }
+
+        if (arrGarbage.length < 6) {
             arrGarbage.push(new Garbage());
         }
     }
@@ -131,8 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
-
-        handleGarbage();
+        flowGarbage();
         requestAnimationFrame(animate);
     }
     animate();
