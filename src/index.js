@@ -1,4 +1,4 @@
-// const Monster = require("./scripts/monster")
+// const Garbage = require("./scripts/garbage")
 // const Player = require("./scripts/player")
 // window.MovingObject = MovingObject;
 // window.GameView = GameView;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasBoard.height = 800;
     const ctxBoard = canvasBoard.getContext('2d');
 
-   
+
     // var background = new Image();
     // background.src = "./assets/SPONGEBOB.png";
 
@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
  // let gameFrame = 0;
     const edgePosition = canvasBoard.getBoundingClientRect();
+    // window.addEventListener('resize', function (){
+    //     return edgePosition
+    // })
+
     const arrMouse = [];
     let hue = 0;
 
@@ -32,11 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
         y: undefined,
     };
 
-    canvasBoard.addEventListener('mousemove', function () {
+    canvasBoard.addEventListener('mousemove', function (event) {
         mouse.x = event.x;
         mouse.y = event.y;
 
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 4; i++) {
             arrMouse.push(new mouseBubble());
         }
     });
@@ -51,13 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
             this.speedY = Math.random() * 4 - 2;
             this.color = 'hsl(' + hue + ', 100%, 50%)';
         }
-        update() {
+        updateMouse() {
             this.x += this.speedX;
             this.y += this.speedY;
             if (this.size > 0.2) this.size -= 0.1;
         }
 
-        draw() {
+        drawMouse() {
             ctxBoard.fillStyle = this.color;
             ctxBoard.beginPath();
             ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -68,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mouseBubbleEffect() {
         for (let i = 0; i < arrMouse.length; i++) {
-            arrMouse[i].update();
-            arrMouse[i].draw();
+            arrMouse[i].updateMouse();
+            arrMouse[i].drawMouse();
 
             if (arrMouse[i].size > 30) {
                 arrMouse.splice(i, 1);
@@ -77,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-
-
 
 
     //Player 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.color = color;
     }
 
-    Player.prototype.draw = function () {
+    Player.prototype.drawPlayer = function () {
         ctxBoard.beginPath();
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctxBoard.fillStyle = this.color;
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    Player.prototype.move = function () {
+    Player.prototype.movePlayer = function () {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
 
@@ -110,8 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const player = new Player(300, 300, 30, "blue");
-    player.draw();
-    console.log(player);
+    // player.drawPlayer();
+    // console.log(player);
 
 
     //Monster
@@ -136,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Monster.prototype.move = function () {
         this.x += this.speedX;
         this.y += this.speedY;
-
     };
 
     const monster = new Monster();
@@ -212,12 +213,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
+        // drawPlayer()
+        // movePlayer()
+
         flowGarbage();
         // gameFrame++;
-        ctxBoard.fillStyle = 'rgba(0,0,0,0.1';
+        ctxBoard.fillStyle = 'rgba(1,1,1,0)';
         ctxBoard.fillRect(0, 0, canvasBoard.width, canvasBoard.height);
         mouseBubbleEffect();
         hue += 3;
+        canvasBoard.getBoundingClientRect()
         requestAnimationFrame(animate);
     }
     animate();
