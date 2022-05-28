@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let arrGarbage = [];
 
-    //Player
+    //Player 
     function Player(x, y, radius, color) {
         this.x = canvasBoard.width / 2;
         this.y = canvasBoard.height / 2;
