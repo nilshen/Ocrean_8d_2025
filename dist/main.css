@@ -21,3 +21,7 @@ body {
   width: 1400px;
   height: 800px;
 }
+
+h1 {
+  position: absolute;
+}

@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasBoard.height = 800;
     const ctxBoard = canvasBoard.getContext('2d');
 
-    // let gameFrame = 0;
-    // const edgePosition = canvasBoard.getBoundingClientRect();
+   
     // var background = new Image();
     // background.src = "./assets/SPONGEBOB.png";
 
@@ -23,7 +22,64 @@ document.addEventListener("DOMContentLoaded", () => {
     //     ctxBoard.drawImage(background.src, 0, 0);
     // };
 
-   
+ // let gameFrame = 0;
+    const edgePosition = canvasBoard.getBoundingClientRect();
+    const arrMouse = [];
+    let hue = 0;
+
+    const mouse = {
+        x: undefined,
+        y: undefined,
+    };
+
+    canvasBoard.addEventListener('mousemove', function () {
+        mouse.x = event.x;
+        mouse.y = event.y;
+
+        for (let i = 0; i < 1; i++) {
+            arrMouse.push(new mouseBubble());
+        }
+    });
+
+    class mouseBubble {
+        constructor() {
+            this.x = mouse.x - edgePosition.left;
+            this.y = mouse.y - edgePosition.top;
+
+            this.size = Math.random() * 15 + 1;
+            this.speedX = Math.random() * 4 - 2;
+            this.speedY = Math.random() * 4 - 2;
+            this.color = 'hsl(' + hue + ', 100%, 50%)';
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.size > 0.2) this.size -= 0.1;
+        }
+
+        draw() {
+            ctxBoard.fillStyle = this.color;
+            ctxBoard.beginPath();
+            ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctxBoard.fill();
+
+        }
+    }
+
+    function mouseBubbleEffect() {
+        for (let i = 0; i < arrMouse.length; i++) {
+            arrMouse[i].update();
+            arrMouse[i].draw();
+
+            if (arrMouse[i].size > 30) {
+                arrMouse.splice(i, 1);
+                i--;
+            }
+        }
+    }
+
+
+
 
     //Player 
     function Player(x, y, radius, color) {
@@ -95,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Commented this out because the garbage needs to fall from the ceiling;
         this.y = Math.random() //* canvasBoard.height; 
         this.radius = 20;
-        this.speedX = (Math.random() * 10 - 4.5) / 5; //goes two ways left/right  
+        this.speedX = (Math.random() * 20 - 9.5) / 4; //goes two ways left/right  
         this.speedY = Math.random() * 3 + 2;
         // this.draw();
         this.distance;
@@ -158,6 +214,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
         flowGarbage();
         // gameFrame++;
+        ctxBoard.fillStyle = 'rgba(0,0,0,0.1';
+        ctxBoard.fillRect(0, 0, canvasBoard.width, canvasBoard.height);
+        mouseBubbleEffect();
+        hue += 3;
         requestAnimationFrame(animate);
     }
     animate();
