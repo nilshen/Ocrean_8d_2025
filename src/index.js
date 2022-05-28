@@ -15,49 +15,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctxBoard = canvasBoard.getContext('2d');
 
 
-    // var background = new Image();
-    // background.src = "./assets/SPONGEBOB.png";
-
-    // background.onload = function () {
-    //     ctxBoard.drawImage(background.src, 0, 0);
-    // };
-
- // let gameFrame = 0;
+    let gameFrame = 0;
     const edgePosition = canvasBoard.getBoundingClientRect();
     // window.addEventListener('resize', function (){
-    //     return edgePosition
+    //     return edgePosition = canvasBoard.getBoundingClientRect();
     // })
 
-    const arrMouse = [];
-    let hue = 0;
-
     const mouse = {
-        x: undefined,
-        y: undefined,
+        x: canvasBoard.width / 2,
+        y: canvasBoard.height / 2,
+        click: false
     };
 
+    //mousemove effect
     canvasBoard.addEventListener('mousemove', function (event) {
-        mouse.x = event.x;
-        mouse.y = event.y;
+        mouse.x = event.x - edgePosition.left;
+        mouse.y = event.y - edgePosition.top;
 
-        for (let i = 0; i < 4; i++) {
+        // for (let i = 0; i < 1; i++) {
             arrMouse.push(new mouseBubble());
-        }
+        // }
     });
+    const arrMouse = [];
+    // const bubble = new Imgage()
+    // bubble.src = ''
+    let hue = 0;
+
 
     class mouseBubble {
         constructor() {
-            this.x = mouse.x - edgePosition.left;
-            this.y = mouse.y - edgePosition.top;
+            this.x = mouse.x;
+            this.y = mouse.y;
 
-            this.size = Math.random() * 15 + 1;
+            this.size = 10;
             this.speedX = Math.random() * 4 - 2;
-            this.speedY = Math.random() * 4 - 2;
-            this.color = 'hsl(' + hue + ', 100%, 50%)';
+            this.speedY = Math.random() * 5 - 1;
+            this.color = 'rgb(231,254,255)';
+            // this.color = 'hsl(' + hue + ', 100%, 50%)';
         }
         updateMouse() {
             this.x += this.speedX;
-            this.y += this.speedY;
+            this.y -= this.speedY;
             if (this.size > 0.2) this.size -= 0.1;
         }
 
@@ -66,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ctxBoard.beginPath();
             ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctxBoard.fill();
-
+            // ctxBoard.drawImage(bubble, this.x, this.y, this.radius, this.radius)
         }
     }
 
@@ -82,22 +80,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    //for player follow mouse
+    // canvasBoard.addEventListener('mousedown', function (event) {
+    //     mouse.x = event.x - edgePosition.left;
+    //     mouse.y = event.y - edgePosition.top;
+    //     mouse.click = true;
+    // });
+
+    // canvasBoard.addEventListener('mouseup', function (event) {
+    //     mouse.x = event.x - edgePosition.left;
+    //     mouse.y = event.y - edgePosition.top;
+    //     mouse.click = false;
+    // });
 
     //Player 
-    function Player(x, y, radius, color) {
+    function Player() {
         this.x = canvasBoard.width / 2;
         this.y = canvasBoard.height / 2;
-        this.radius = radius;
-        this.color = color;
+        this.radius = 30;
+        this.color = 'blue';
     }
-
-    Player.prototype.drawPlayer = function () {
-        ctxBoard.beginPath();
-        ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        ctxBoard.fillStyle = this.color;
-        ctxBoard.fill();
-    };
-
 
     Player.prototype.movePlayer = function () {
         const dx = this.x - mouse.x;
@@ -111,37 +113,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const player = new Player(300, 300, 30, "blue");
-    // player.drawPlayer();
-    // console.log(player);
+    Player.prototype.drawPlayer = function () {
+        // if (mouse.click) {
+        //     ctxBoard.lineWidth = 1;
+        //     ctxBoard.beginPath();
+        //     ctxBoard.moveTo(this.x, this.y);
+        //     ctxBoard.lineTo(mouse.x, mouse.y);
+        //     ctxBoard.stroke();
+        // }
 
-
-    //Monster
-    function Monster() {
-        this.x = Math.random() * canvasBoard.width;
-        this.y = Math.random() * (canvasBoard.height / 2);
-        this.radius = Math.random() + 30;
-        this.speedX = Math.random() * 10;
-        this.speedY = Math.random() * 10;
-    }
-
-    Monster.prototype.draw = function () {
-        ctxBoard.fillStyle = 'red';
-        // ctxBoard.strokeStyle = 'yellow';
-        // ctxBoard.lineWidth = 5;
         ctxBoard.beginPath();
-        ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctxBoard.fillStyle = this.color;
         ctxBoard.fill();
-        // ctxBoard.stroke();
+        ctxBoard.closePath()
+        ctxBoard.fillRect(this.x, this.y, this.radius, 10)
     };
 
-    Monster.prototype.move = function () {
-        this.x += this.speedX;
-        this.y += this.speedY;
-    };
+    const player = new Player();
+    player.drawPlayer()
+    console.log(player)
+    console.log(canvasBoard.width / 2)
+    
+    //Monster
+    // function Monster() {
+    //     this.x = Math.random() * canvasBoard.width;
+    //     this.y = Math.random() * (canvasBoard.height / 2);
+    //     this.radius = Math.random() + 30;
+    //     this.speedX = Math.random() * 10;
+    //     this.speedY = Math.random() * 10;
+    // }
 
-    const monster = new Monster();
-    monster.draw();
+    // Monster.prototype.draw = function () {
+    //     ctxBoard.fillStyle = 'red';
+    //     // ctxBoard.strokeStyle = 'yellow';
+    //     // ctxBoard.lineWidth = 5;
+    //     ctxBoard.beginPath();
+    //     ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    //     ctxBoard.fill();
+    //     // ctxBoard.stroke();
+    // };
+
+    // Monster.prototype.move = function () {
+    //     this.x += this.speedX;
+    //     this.y += this.speedY;
+    // };
+
+    // const monster = new Monster();
+    // monster.draw();
 
 
 
@@ -150,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function Garbage() {
         this.x = Math.random() * canvasBoard.width;
         //Commented this out because the garbage needs to fall from the ceiling;
-        this.y = Math.random() //* canvasBoard.height; 
+        this.y = Math.random(); //* canvasBoard.height; 
         this.radius = 20;
         this.speedX = (Math.random() * 20 - 9.5) / 4; //goes two ways left/right  
         this.speedY = Math.random() * 3 + 2;
@@ -179,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-//first try. code work but garbage disappear before hit the ground. 
+    //first try. code work but garbage disappear before hit the ground. 
     function flowGarbage() {
         for (let i = 0; i < arrGarbage.length; i++) {
             arrGarbage[i].move();
@@ -191,8 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 arrGarbage.splice(j, 1);    //should have been arrGarbage.splice(j, 1) not arrGarbage.splice(arrGarbage[j], 1)!!!!
             }
         }
+        if (gameFrame % 40 === 0) {
+                arrGarbage.push(new Garbage())
+            }
 
-        while (arrGarbage.length < 8) {
+        while (arrGarbage.length < 4) {
             arrGarbage.push(new Garbage());
         }
     }
@@ -213,16 +235,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
-        // drawPlayer()
-        // movePlayer()
-
+        
+        //player
+        player.movePlayer()
+        player.drawPlayer()
+        
+        // Garbage
         flowGarbage();
-        // gameFrame++;
+        gameFrame++;
+
+        //mouse effect
         ctxBoard.fillStyle = 'rgba(1,1,1,0)';
         ctxBoard.fillRect(0, 0, canvasBoard.width, canvasBoard.height);
         mouseBubbleEffect();
         hue += 3;
-        canvasBoard.getBoundingClientRect()
+
+        // canvasBoard.getBoundingClientRect();
         requestAnimationFrame(animate);
     }
     animate();
