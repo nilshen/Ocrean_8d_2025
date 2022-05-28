@@ -42,13 +42,16 @@ In addition, this project will include
 - [ ] create moving objects:
     - [ ] player: follow the mouse direction
     - [ ] garbages: falling down randomly from the ceiling
-    - [ ] monsters: showed up randomly (not from the ceiling) 
+    - [ ] monsters: showed up randomly (not from the ceiling)
+
 - [ ] setting up collision 
 - [ ] setting up collision function 
     - [ ] player x garbage = score 
-    - [ ] garbage x monster = nothing (or maybe kill the monster?)
     - [ ] player x monster = lose 1 life
+    - [ ] garbage x monster = nothing (or maybe kill the monster?)
+
 - [ ] setting up the game view
+- [ ] choose the characters: Spongebob/Patrick Star
 - [ ] setting up mouse move with bubble effect to follow
 
 `Tuesday` 
@@ -64,4 +67,3 @@ In addition, this project will include
 - [ ] if have time, setting up additional function:
     - [ ] choose difficulty function
     - [ ] choose the mouse effect
-    - [ ] choose the characters: Spongebob/Patrick Star
