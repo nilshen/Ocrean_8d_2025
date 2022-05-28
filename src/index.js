@@ -10,20 +10,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const canvasBoard = document.getElementById("canvasBoard");
-    canvasBoard.width = 800;
-    canvasBoard.height = 600;
-    
-
+    canvasBoard.width = 1400;
+    canvasBoard.height = 800;
     const ctxBoard = canvasBoard.getContext('2d');
 
-    var background = new Image();
-    background.src = "./assets/SPONGEBOB.png";
+    let gameFrame = 0;
+    // const edgePosition = canvasBoard.getBoundingClientRect();
+    // var background = new Image();
+    // background.src = "./assets/SPONGEBOB.png";
 
-    background.onload = function () {
-        ctxBoard.drawImage(background.src, 0, 0);
-    };
+    // background.onload = function () {
+    //     ctxBoard.drawImage(background.src, 0, 0);
+    // };
 
-    let arrGarbage = [];
+   
 
     //Player 
     function Player(x, y, radius, color) {
@@ -85,17 +85,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const monster = new Monster();
     monster.draw();
-    console.log(monster);
+
 
 
     //Garbage
+    const arrGarbage = [];
     function Garbage() {
         this.x = Math.random() * canvasBoard.width;
         //Commented this out because the garbage needs to fall from the ceiling;
-        this.y = 0 - 10 // Math.random() * canvasBoard.height; 
+        this.y = Math.random() //* canvasBoard.height; 
         this.radius = 20;
-        this.speedX = (Math.random() * 10 - 4.5)/5;
-        this.speedY = Math.random() * 3 + 1;
+        this.speedX = (Math.random() * 10 - 4.5) / 5; //goes two ways left/right  
+        this.speedY = Math.random() * 3 + 2;
+        // this.draw();
+        this.distance;
+
     }
 
     Garbage.prototype.draw = function () {
@@ -103,6 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxBoard.beginPath();
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctxBoard.fill();
+        ctxBoard.closePath();
+
     };
 
     Garbage.prototype.move = function () {
@@ -110,33 +116,51 @@ document.addEventListener("DOMContentLoaded", () => {
         this.y += this.speedY;
     };
 
-    function addGarbage() {
-        for (let i = 0; i < 13; i++) {
-            arrGarbage.push(new Garbage());
-        }
-    }
+    // function addGarbage() {
+    //     for (let i = 0; i < 20; i++) {
+    //         arrGarbage.push(new Garbage());
+    //     }
+    // }
+
+//first try. code work but garbage disappear before hit the ground. 
+    // function flowGarbage() {
+    //     for (let i = 0; i < arrGarbage.length; i++) {
+    //         arrGarbage[i].move();
+    //         arrGarbage[i].draw();
+    //     }
+
+    //     for (let j = 0; j < arrGarbage.length; j++) {
+    //         if (arrGarbage[j].y > canvasBoard.height) {
+    //             arrGarbage.splice(arrGarbage[j], 1);
+    //             j--;
+    //         }
+    //     }
+
+
+    //     while (arrGarbage.length < 8) {
+    //         arrGarbage.push(new Garbage());
+    //     }
+    // }
+
 
     function flowGarbage() {
-        for (let i = 0; i < arrGarbage.length; i++) {
-            arrGarbage[i].move();
-            arrGarbage[i].draw();
+        if (gameFrame % 30 === 0) {
+            arrGarbage.push(new Garbage())
         }
 
         for (let i = 0; i < arrGarbage.length; i++) {
-            if (arrGarbage[i].y > 650) {
-                arrGarbage.splice(arrGarbage[i], 1)
-            }
-        }
-
-        if (arrGarbage.length < 6) {
-            arrGarbage.push(new Garbage());
+            arrGarbage[i].move()
+            arrGarbage[i].draw()
+            if (arrGarbage[i].y > canvasBoard.height) {
+                arrGarbage.splice(i, 1);
         }
     }
-    console.log(arrGarbage);
+    }
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
         flowGarbage();
+        gameFrame++;
         requestAnimationFrame(animate);
     }
     animate();
