@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let gameFrame = 0;
-    const score = 0
+    let score = 0;
+    let life = 3;
+
     const edgePosition = canvasBoard.getBoundingClientRect();
     // window.addEventListener('resize', function (){
     //     return edgePosition = canvasBoard.getBoundingClientRect();
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         click: false
     };
 
-    //mousemove effect
+    //mousemove bubble effect & player follow mousemove
     canvasBoard.addEventListener('mousemove', function (event) {
         mouse.x = event.x - edgePosition.left;
         mouse.y = event.y - edgePosition.top;
@@ -82,18 +84,18 @@ document.addEventListener("DOMContentLoaded", () => {
     //     }
     // }
 
-    //for player follow mouse
-    // canvasBoard.addEventListener('mousedown', function (event) {
-    //     mouse.x = event.x - edgePosition.left;
-    //     mouse.y = event.y - edgePosition.top;
-    //     mouse.click = true;
-    // });
+    // for player follow mouse with line
+    canvasBoard.addEventListener('mousedown', function (event) {
+        mouse.x = event.x - edgePosition.left;
+        mouse.y = event.y - edgePosition.top;
+        mouse.click = true;
+    });
 
-    // canvasBoard.addEventListener('mouseup', function (event) {
-    //     mouse.x = event.x - edgePosition.left;
-    //     mouse.y = event.y - edgePosition.top;
-    //     mouse.click = false;
-    // });
+    canvasBoard.addEventListener('mouseup', function (event) {
+        mouse.x = event.x - edgePosition.left;
+        mouse.y = event.y - edgePosition.top;
+        mouse.click = false;
+    });
 
     //Player 
     function Player() {
@@ -116,13 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     Player.prototype.drawPlayer = function () {
-        // if (mouse.click) {
-        //     ctxBoard.lineWidth = 1;
-        //     ctxBoard.beginPath();
-        //     ctxBoard.moveTo(this.x, this.y);
-        //     ctxBoard.lineTo(mouse.x, mouse.y);
-        //     ctxBoard.stroke();
-        // }
+        if (mouse.click) {
+            ctxBoard.lineWidth = 1;
+            ctxBoard.beginPath();
+            ctxBoard.moveTo(this.x, this.y);
+            ctxBoard.lineTo(mouse.x, mouse.y);
+            ctxBoard.stroke();
+        }
 
         ctxBoard.beginPath();
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
@@ -204,6 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
             this.speedX = Math.random() * -10 / 4;
             this.speedY = Math.random() * -10 + 3;
         }
+
+        this.killLife = false;
     }
 
     Monster.prototype.drawMonster = function () {
@@ -220,6 +224,13 @@ document.addEventListener("DOMContentLoaded", () => {
         this.x += this.speedX;
         this.y += this.speedY;
     };
+
+    Monster.prototype.distanceMonster = function (otherObject) {
+        let dx = this.x - otherObject.x;
+        let dy = this.y - otherObject.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    };
+
 
     function flowMonster() {
         for (let i = 0; i < arrMonster.length; i++) {
@@ -241,11 +252,22 @@ document.addEventListener("DOMContentLoaded", () => {
             if (arrMonster[i].x > canvasBoard.width + arrMonster[i].radius
                 || arrMonster[i].x < 0 - arrMonster[i].radius
                 || arrMonster[i].y < 0 - arrMonster[i].radius) {
-                arrMonster.splice(i, 1)
+                arrMonster.splice(i, 1);
+            }
+        }
+
+        for (let j = 0; j < arrMonster.length; j++) {
+            if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius && arrMonster[j].killLife === false) {
+                life--;
+                arrMonster[j].killLife = true;
+
+                // setInterval(() => {
+                //     arrMonster[j].killLife = false, 2000
+                // })
             }
         }
     }
-    
+
     // const monster = new Monster();
     // monster.draw();
 
@@ -260,8 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.radius = 20;
         this.speedX = (Math.random() * 20 - 9.5) / 4; //goes two ways left/right  
         this.speedY = Math.random() * 3 + 2;
-        // this.draw();
-        this.distance;
+        this.killGarbage = false;
 
     }
 
@@ -279,6 +300,11 @@ document.addEventListener("DOMContentLoaded", () => {
         this.y += this.speedY;
     };
 
+    Garbage.prototype.distanceGarbage = function (otherObject) {
+        let dx = this.x - otherObject.x;
+        let dy = this.y - otherObject.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    };
 
     //first try. code work but garbage disappear before hit the ground. 
     function flowGarbage() {
@@ -293,7 +319,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        
+
+        for (let j = 0; j < arrGarbage.length; j++) {
+            if (arrGarbage[j].distanceGarbage(player) <= arrGarbage[j].radius + player.radius) {
+                arrGarbage.splice(j, 1);
+                score += 1;
+            }
+        }
+
+        for (let j = 0; j < arrGarbage.length; j++) {
+            for (let i = 0; i < arrMonster.length; i++)
+                if (arrGarbage[j].distanceGarbage(arrMonster[i]) <= arrGarbage[j].radius + arrMonster[i].radius
+                    && arrGarbage[j].killGarbage === false) {
+                    // arrMonster.splice(i, 1);
+                    score -= 3;
+                    arrGarbage[j].killGarbage = true;
+                }
+        }
 
 
         if (gameFrame % 40 === 0) {
@@ -342,6 +384,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // mouseBubbleEffect();
         // hue += 3;
 
+        //score & life 
+        ctxBoard.fillStyle = "black";
+        ctxBoard.fillText('score: ' + score, canvasBoard.width / 2, 50);
+
+        ctxBoard.fillStyle = "black";
+        ctxBoard.fillText('life: ' + life, canvasBoard.width / 2, 30);
         // canvasBoard.getBoundingClientRect();
         requestAnimationFrame(animate);
     }
