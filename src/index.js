@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let gameFrame = 0;
+    const score = 0
     const edgePosition = canvasBoard.getBoundingClientRect();
     // window.addEventListener('resize', function (){
     //     return edgePosition = canvasBoard.getBoundingClientRect();
@@ -163,30 +164,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
-    PlayerBubble.prototype.playerBubbleEffect = function() {
+    PlayerBubble.prototype.playerBubbleEffect = function () {
         if (gameFrame % 10 === 0) {
             for (let i = 0; i < 1; i++) {
                 arrBubble.push(new PlayerBubble());
             }
-        }   
+        }
         for (let i = 0; i < arrBubble.length; i++) {
             arrBubble[i].moveplayerBubble();
             arrBubble[i].drawplayerBubble();
-            }
-    }
+        }
+    };
 
 
     const playerBubble = new PlayerBubble();
 
 
     //Monster
-    const arrMonster = []
+    const arrMonster = [];
+
     function Monster() {
-        this.x = Math.random() * canvasBoard.width;
-        this.y = Math.random() * (canvasBoard.height / 2);
-        this.radius = Math.random() + 30;
-        this.speedX = Math.random() * 10 / 2;
-        this.speedY = Math.random() * 10 / 2;
+        this.radius = 30;
+        const posMonster = Math.random() * 100 + 1;
+        if (posMonster > 70) {
+            this.x = 0 - this.radius;
+            this.y = Math.random() * canvasBoard.height + 1 - this.radius;
+            this.speedX = (Math.random() * 20 - 9.5) / 5;
+            this.speedY = 0; //Math.random() * 10 / 2;
+        }
+        else if (posMonster < 40) {
+            this.x = canvasBoard.width + this.radius;
+            this.y = Math.random() * canvasBoard.height + 1;
+            this.speedX = (Math.random() * 20 - 9.5) / 5;
+            this.speedY = 0; //Math.random() * -10 / 2;
+        }
+        else if (posMonster <= 70 && posMonster >= 40) {
+            this.x = Math.random() * canvasBoard.width + 1;
+            this.y = canvasBoard.height + this.radius;
+            this.speedX = Math.random() * -10 / 4;
+            this.speedY = Math.random() * -10 + 3;
+        }
     }
 
     Monster.prototype.drawMonster = function () {
@@ -203,23 +220,32 @@ document.addEventListener("DOMContentLoaded", () => {
         this.x += this.speedX;
         this.y += this.speedY;
     };
-    
-    function flowMonster(){
+
+    function flowMonster() {
         for (let i = 0; i < arrMonster.length; i++) {
             arrMonster[i].moveMonster();
             arrMonster[i].drawMonster();
-            }
+        }
 
-        while (arrMonster.length < 1) {
+        while (arrMonster.length < 3) {
             arrMonster.push(new Monster());
         }
 
-        if (gameFrame % 100 === 0) {
+        if (gameFrame % 200 === 0) {
             for (let i = 0; i < 1; i++) {
                 arrMonster.push(new Monster());
             }
-        }   
+        }
+
+        for (let i = 0; i < arrMonster.length; i++) {
+            if (arrMonster[i].x > canvasBoard.width + arrMonster[i].radius
+                || arrMonster[i].x < 0 - arrMonster[i].radius
+                || arrMonster[i].y < 0 - arrMonster[i].radius) {
+                arrMonster.splice(i, 1)
+            }
+        }
     }
+    
     // const monster = new Monster();
     // monster.draw();
 
@@ -266,6 +292,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 arrGarbage.splice(j, 1);    //should have been arrGarbage.splice(j, 1) not arrGarbage.splice(arrGarbage[j], 1)!!!!
             }
         }
+
+        
+
+
         if (gameFrame % 40 === 0) {
             arrGarbage.push(new Garbage());
         }
@@ -298,13 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //playerBubble
         playerBubble.playerBubbleEffect();
-        
+
         // Garbage
         flowGarbage();
         gameFrame++;
 
         // Monster
-        flowMonster()
+        flowMonster();
 
         //mouse effect
         // ctxBoard.fillStyle = 'rgba(1,1,1,0)';
@@ -312,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // mouseBubbleEffect();
         // hue += 3;
 
-        canvasBoard.getBoundingClientRect();
+        // canvasBoard.getBoundingClientRect();
         requestAnimationFrame(animate);
     }
     animate();
