@@ -33,52 +33,53 @@ document.addEventListener("DOMContentLoaded", () => {
         mouse.y = event.y - edgePosition.top;
 
         // for (let i = 0; i < 1; i++) {
-            arrMouse.push(new mouseBubble());
+        //     arrMouse.push(new mouseBubble());
         // }
     });
-    const arrMouse = [];
-    // const bubble = new Imgage()
-    // bubble.src = ''
-    let hue = 0;
+
+    // const arrMouse = [];
+    // // const bubble = new Imgage()
+    // // bubble.src = ''
+    // let hue = 0;
 
 
-    class mouseBubble {
-        constructor() {
-            this.x = mouse.x;
-            this.y = mouse.y;
+    // class mouseBubble {
+    //     constructor() {
+    //         this.x = mouse.x;
+    //         this.y = mouse.y;
 
-            this.size = 10;
-            this.speedX = Math.random() * 4 - 2;
-            this.speedY = Math.random() * 5 - 1;
-            this.color = 'rgb(231,254,255)';
-            // this.color = 'hsl(' + hue + ', 100%, 50%)';
-        }
-        updateMouse() {
-            this.x += this.speedX;
-            this.y -= this.speedY;
-            if (this.size > 0.2) this.size -= 0.1;
-        }
+    //         this.size = 10;
+    //         this.speedX = Math.random() * 2 - 1;
+    //         this.speedY = Math.random() * 1.5;
+    //         this.color = 'rgb(231,254,255)';
+    //         // this.color = 'hsl(' + hue + ', 100%, 50%)';
+    //     }
+    //     moveMouse() {
+    //         this.x += this.speedX;
+    //         this.y -= this.speedY;
+    //         if (this.size > 0.2) this.size -= 0.1;
+    //     }
 
-        drawMouse() {
-            ctxBoard.fillStyle = this.color;
-            ctxBoard.beginPath();
-            ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctxBoard.fill();
-            // ctxBoard.drawImage(bubble, this.x, this.y, this.radius, this.radius)
-        }
-    }
+    //     drawMouse() {
+    //         ctxBoard.fillStyle = this.color;
+    //         ctxBoard.beginPath();
+    //         ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    //         ctxBoard.fill();
+    //         // ctxBoard.drawImage(bubble, this.x, this.y, this.radius, this.radius)
+    //     }
+    // }
 
-    function mouseBubbleEffect() {
-        for (let i = 0; i < arrMouse.length; i++) {
-            arrMouse[i].updateMouse();
-            arrMouse[i].drawMouse();
+    // function mouseBubbleEffect() {
+    //     for (let i = 0; i < arrMouse.length; i++) {
+    //         arrMouse[i].moveMouse();
+    //         arrMouse[i].drawMouse();
 
-            if (arrMouse[i].size > 30) {
-                arrMouse.splice(i, 1);
-                i--;
-            }
-        }
-    }
+    //         if (arrMouse[i].size > 30) {
+    //             arrMouse.splice(i, 1);
+    //             i--;
+    //         }
+    //     }
+    // }
 
     //for player follow mouse
     // canvasBoard.addEventListener('mousedown', function (event) {
@@ -106,10 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const dy = this.y - mouse.y;
 
         if (this.x !== mouse.x) {
-            this.x -= dx;
+            this.x -= dx / 13;
         }
         if (this.y !== mouse.y) {
-            this.y -= dy;
+            this.y -= dy / 13;
         }
     };
 
@@ -126,39 +127,99 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctxBoard.fillStyle = this.color;
         ctxBoard.fill();
-        ctxBoard.closePath()
-        ctxBoard.fillRect(this.x, this.y, this.radius, 10)
+        ctxBoard.closePath();
+        ctxBoard.fillRect(this.x, this.y, this.radius, 10);
+
     };
 
     const player = new Player();
-    player.drawPlayer()
-    console.log(player)
-    console.log(canvasBoard.width / 2)
-    
+    // player.drawPlayer();
+
+    //playerBubble 
+    const arrBubble = [];
+
+    function PlayerBubble() {
+        this.x = player.x;
+        this.y = player.y - player.radius;
+        this.size = 15;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 1.5;
+        this.color = 'rgb(231,254,255)';
+    }
+
+    PlayerBubble.prototype.moveplayerBubble = function () {
+        this.x += this.speedX;
+        this.y -= this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+    };
+
+    PlayerBubble.prototype.drawplayerBubble = function () {
+
+        ctxBoard.fillStyle = this.color;
+        ctxBoard.beginPath();
+        ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctxBoard.fill();
+        // ctxBoard.drawImage(bubble, this.x, this.y, this.radius, this.radius)
+
+    };
+
+    PlayerBubble.prototype.playerBubbleEffect = function() {
+        if (gameFrame % 10 === 0) {
+            for (let i = 0; i < 1; i++) {
+                arrBubble.push(new PlayerBubble());
+            }
+        }   
+        for (let i = 0; i < arrBubble.length; i++) {
+            arrBubble[i].moveplayerBubble();
+            arrBubble[i].drawplayerBubble();
+            }
+    }
+
+
+    const playerBubble = new PlayerBubble();
+
+
     //Monster
-    // function Monster() {
-    //     this.x = Math.random() * canvasBoard.width;
-    //     this.y = Math.random() * (canvasBoard.height / 2);
-    //     this.radius = Math.random() + 30;
-    //     this.speedX = Math.random() * 10;
-    //     this.speedY = Math.random() * 10;
-    // }
+    const arrMonster = []
+    function Monster() {
+        this.x = Math.random() * canvasBoard.width;
+        this.y = Math.random() * (canvasBoard.height / 2);
+        this.radius = Math.random() + 30;
+        this.speedX = Math.random() * 10 / 2;
+        this.speedY = Math.random() * 10 / 2;
+    }
 
-    // Monster.prototype.draw = function () {
-    //     ctxBoard.fillStyle = 'red';
-    //     // ctxBoard.strokeStyle = 'yellow';
-    //     // ctxBoard.lineWidth = 5;
-    //     ctxBoard.beginPath();
-    //     ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    //     ctxBoard.fill();
-    //     // ctxBoard.stroke();
-    // };
+    Monster.prototype.drawMonster = function () {
+        ctxBoard.fillStyle = 'red';
+        // ctxBoard.strokeStyle = 'yellow';
+        // ctxBoard.lineWidth = 5;
+        ctxBoard.beginPath();
+        ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctxBoard.fill();
+        // ctxBoard.stroke();
+    };
 
-    // Monster.prototype.move = function () {
-    //     this.x += this.speedX;
-    //     this.y += this.speedY;
-    // };
+    Monster.prototype.moveMonster = function () {
+        this.x += this.speedX;
+        this.y += this.speedY;
+    };
+    
+    function flowMonster(){
+        for (let i = 0; i < arrMonster.length; i++) {
+            arrMonster[i].moveMonster();
+            arrMonster[i].drawMonster();
+            }
 
+        while (arrMonster.length < 1) {
+            arrMonster.push(new Monster());
+        }
+
+        if (gameFrame % 100 === 0) {
+            for (let i = 0; i < 1; i++) {
+                arrMonster.push(new Monster());
+            }
+        }   
+    }
     // const monster = new Monster();
     // monster.draw();
 
@@ -178,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    Garbage.prototype.draw = function () {
+    Garbage.prototype.drawGarbage = function () {
         ctxBoard.fillStyle = "yellow";
         ctxBoard.beginPath();
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
@@ -187,22 +248,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
-    Garbage.prototype.move = function () {
+    Garbage.prototype.moveGarbage = function () {
         this.x += this.speedX;
         this.y += this.speedY;
     };
 
-    function addGarbage() {
-        for (let i = 0; i < 20; i++) {
-            arrGarbage.push(new Garbage());
-        }
-    }
 
     //first try. code work but garbage disappear before hit the ground. 
     function flowGarbage() {
         for (let i = 0; i < arrGarbage.length; i++) {
-            arrGarbage[i].move();
-            arrGarbage[i].draw();
+            arrGarbage[i].moveGarbage();
+            arrGarbage[i].drawGarbage();
         }
 
         for (let j = 0; j < arrGarbage.length; j++) {
@@ -211,14 +267,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         if (gameFrame % 40 === 0) {
-                arrGarbage.push(new Garbage())
-            }
+            arrGarbage.push(new Garbage());
+        }
 
         while (arrGarbage.length < 4) {
             arrGarbage.push(new Garbage());
         }
     }
-
+    //option 2 with gameFrame to generate garbage. Combined with option 1 to make it more inteactive and more fun.
     // function flowGarbage() {
     //     if (gameFrame % 30 === 0) {
     //         arrGarbage.push(new Garbage())
@@ -235,22 +291,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
-        
+
         //player
-        player.movePlayer()
-        player.drawPlayer()
+        player.movePlayer();
+        player.drawPlayer();
+
+        //playerBubble
+        playerBubble.playerBubbleEffect();
         
         // Garbage
         flowGarbage();
         gameFrame++;
 
-        //mouse effect
-        ctxBoard.fillStyle = 'rgba(1,1,1,0)';
-        ctxBoard.fillRect(0, 0, canvasBoard.width, canvasBoard.height);
-        mouseBubbleEffect();
-        hue += 3;
+        // Monster
+        flowMonster()
 
-        // canvasBoard.getBoundingClientRect();
+        //mouse effect
+        // ctxBoard.fillStyle = 'rgba(1,1,1,0)';
+        // ctxBoard.fillRect(0, 0, canvasBoard.width, canvasBoard.height);
+        // mouseBubbleEffect();
+        // hue += 3;
+
+        canvasBoard.getBoundingClientRect();
         requestAnimationFrame(animate);
     }
     animate();
