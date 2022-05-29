@@ -7,27 +7,28 @@
 // window.Garbage = Garbage;
 // window.Player = Player;
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const canvasBoard = document.getElementById("canvasBoard");
     canvasBoard.width = 1400;
     canvasBoard.height = 800;
     const ctxBoard = canvasBoard.getContext('2d');
+    const edgePosition = canvasBoard.getBoundingClientRect();
 
-
+    // window.addEventListener('resize', function (){
+    //     edgePosition = canvasBoard.getBoundingClientRect();
+    // })
+    
     let gameFrame = 0;
     let score = 0;
     let life = 3;
+    let gameOver = false;
 
-    const edgePosition = canvasBoard.getBoundingClientRect();
-    // window.addEventListener('resize', function (){
-    //     return edgePosition = canvasBoard.getBoundingClientRect();
-    // })
 
     const mouse = {
         x: canvasBoard.width / 2,
         y: canvasBoard.height / 2,
-        click: false
     };
 
     //mousemove bubble effect & player follow mousemove
@@ -84,19 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //     }
     // }
 
-    // for player follow mouse with line
-    canvasBoard.addEventListener('mousedown', function (event) {
-        mouse.x = event.x - edgePosition.left;
-        mouse.y = event.y - edgePosition.top;
-        mouse.click = true;
-    });
-
-    canvasBoard.addEventListener('mouseup', function (event) {
-        mouse.x = event.x - edgePosition.left;
-        mouse.y = event.y - edgePosition.top;
-        mouse.click = false;
-    });
-
     //Player 
     function Player() {
         this.x = canvasBoard.width / 2;
@@ -118,14 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     Player.prototype.drawPlayer = function () {
-        if (mouse.click) {
-            ctxBoard.lineWidth = 1;
-            ctxBoard.beginPath();
-            ctxBoard.moveTo(this.x, this.y);
-            ctxBoard.lineTo(mouse.x, mouse.y);
-            ctxBoard.stroke();
-        }
-
         ctxBoard.beginPath();
         ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctxBoard.fillStyle = this.color;
@@ -173,8 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         for (let i = 0; i < arrBubble.length; i++) {
-            arrBubble[i].moveplayerBubble();
             arrBubble[i].drawplayerBubble();
+            arrBubble[i].moveplayerBubble();
         }
     };
 
@@ -257,20 +237,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         for (let j = 0; j < arrMonster.length; j++) {
-            if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius && arrMonster[j].killLife === false) {
-                life--;
+            if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius 
+            && arrMonster[j].killLife === false) {
+                life -= 1;
                 arrMonster[j].killLife = true;
 
-                // setInterval(() => {
-                //     arrMonster[j].killLife = false, 2000
-                // })
+                setTimeout(() => {
+                    // console.log("test delay 1 sec")
+                    arrMonster[j].killLife = false}, 1000
+                )
+                
             }
         }
     }
-
-    // const monster = new Monster();
-    // monster.draw();
-
 
 
     //Garbage
@@ -361,12 +340,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
     // }
 
+
+    //game class control
+    function gameOverStatus () {
+        if (life === 0) {
+            gameOver = true
+        }
+    }
+
+    // function Game () {
+    // Game.prototype.handleGameover = function() {
+    //         if (life === 0 ) {
+    //         gameOver = true
+    //         } 
+    //     }
+    // }
+
+
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
         //player
-        player.movePlayer();
         player.drawPlayer();
+        player.movePlayer();
 
         //playerBubble
         playerBubble.playerBubbleEffect();
@@ -386,12 +382,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //score & life 
         ctxBoard.fillStyle = "black";
-        ctxBoard.fillText('score: ' + score, canvasBoard.width / 2, 50);
+        ctxBoard.font = '30px serif';
+        ctxBoard.fillText('score: ' + score, canvasBoard.width / 2 - 50, 50, 500);
 
         ctxBoard.fillStyle = "black";
-        ctxBoard.fillText('life: ' + life, canvasBoard.width / 2, 30);
+        ctxBoard.fillText('life: ' + life, canvasBoard.width / 2 - 50, 30, 500);
         // canvasBoard.getBoundingClientRect();
-        requestAnimationFrame(animate);
+        gameOverStatus()
+        if (gameOver === false) {
+            requestAnimationFrame(animate);
+        }
     }
     animate();
 
