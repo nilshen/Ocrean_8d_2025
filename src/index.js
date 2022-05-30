@@ -56,6 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
+        
         //player
         // player.drawPlayer();
         // player.movePlayer();
