@@ -38,17 +38,17 @@ In addition, this project will include
 ### To do list
 
 `Friday afternoon & weekend`
-- [ ] setting up the canvas game board
-- [ ] create moving objects:
-    - [ ] player: follow the mouse direction
-    - [ ] garbages: falling down randomly from the ceiling
-    - [ ] monsters: showed up randomly (not from the ceiling)
+- [x] setting up the canvas game board
+- [x] create moving objects:
+    - [x] player: follow the mouse direction
+    - [x] garbages: falling down randomly from the ceiling
+    - [x] monsters: showed up randomly (not from the ceiling)
 
-- [ ] setting up collision 
-- [ ] setting up collision function 
-    - [ ] player x garbage = score 
-    - [ ] player x monster = lose 1 life
-    - [ ] garbage x monster = nothing (or maybe kill the monster?)
+- [x] setting up collision 
+- [x] setting up collision function 
+    - [x] player x garbage = score 
+    - [x] player x monster = lose 1 life
+    - [x] garbage x monster = nothing (or maybe kill the monster?)
 
 - [ ] setting up the game view
 - [ ] choose the characters: Spongebob/Patrick Star

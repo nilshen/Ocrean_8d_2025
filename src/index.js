@@ -342,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     //game class control
+
     function gameOverStatus () {
         if (life === 0) {
             gameOver = true
