@@ -10,6 +10,8 @@ import { flowPlayer } from "./scripts/player";
 import { PlayerBubble } from "./scripts/player";
 import { playerBubbleEffect } from "./scripts/player";
 
+import { flowmouseMove, MouseMove } from "./scripts/mouseMove"
+
 window.addEventListener("DOMContentLoaded", () => {
 
 
@@ -41,7 +43,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     //game class control
+    // document.canvasBoard.addEventListener('click', function startGame() {
+    //     window.player = new Player();
+    //     const playerBubble = new PlayerBubble();
+    // })
+
+    
     window.player = new Player();
+    window.mouseMove = new MouseMove();
     const playerBubble = new PlayerBubble();
 
     let audio = document.getElementById("myAudio");
@@ -56,10 +65,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
-        
         //player
-        // player.drawPlayer();
-        // player.movePlayer();
         flowPlayer(player)
 
         //playerBubble
@@ -71,6 +77,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // Monster
         flowMonster();
+
+        //mouseMove
+        flowmouseMove(mouseMove);
 
         //score & life 
         ctxBoard.fillStyle = "black";
