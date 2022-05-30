@@ -1,6 +1,8 @@
 # Background 
 Ocean 8 is a fun and easy to play game. You only need to move your mouse and Spongebob will follow your lead to collect garbages and wastes that are throwed into the ocean. At the mean time, stay away from jellyfish and sharks! You might also find treasures like "The Heart of The Ocean" dimand if you got lucky. 
 
+Special thanks to Tom Li and Nikhil Kumar for the help and inspiration for this project. 
+
 ## Functionality & MVPs
 Player will be able to:
 - Start, pause, and reset the game
@@ -52,7 +54,7 @@ In addition, this project will include
 
 - [ ] setting up the game view
 - [ ] choose the characters: Spongebob/Patrick Star
-- [ ] setting up mouse move with bubble effect to follow
+- [X] setting up mouse move with the player to follow
 
 `Tuesday` 
 - [ ] setting up the 2D assets & music volumn function
