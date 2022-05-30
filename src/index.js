@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         this.radius = 20;
         this.speedX = (Math.random() * 20 - 9.5) / 4; //goes two ways left/right  
         this.speedY = Math.random() * 3 + 2;
-        this.killGarbage = false;
+        this.killMonster = false; //if sliced the monster, then dont need to set the boolean.
 
     }
 
@@ -309,10 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let j = 0; j < arrGarbage.length; j++) {
             for (let i = 0; i < arrMonster.length; i++)
                 if (arrGarbage[j].distanceGarbage(arrMonster[i]) <= arrGarbage[j].radius + arrMonster[i].radius
-                    && arrGarbage[j].killGarbage === false) {
+                    && arrGarbage[j].killMonster === false) {
                     // arrMonster.splice(i, 1);
                     score -= 3;
-                    arrGarbage[j].killGarbage = true;
+                    arrGarbage[j].killMonster = true  //if sliced the monster, then dont need to set the boolean. 
                 }
         }
 
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     //game class control
-
+    let audio = document.getElementById("myAudio")
     function gameOverStatus () {
         if (life === 0) {
             gameOver = true
@@ -389,6 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctxBoard.fillStyle = "black";
         ctxBoard.fillText('life: ' + life, canvasBoard.width / 2 - 50, 30, 500);
         // canvasBoard.getBoundingClientRect();
+        audio.play()
         gameOverStatus()
         if (gameOver === false) {
             requestAnimationFrame(animate);
