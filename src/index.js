@@ -19,10 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
     canvasBoard.width = 1400;
     canvasBoard.height = 800;
     window.ctxBoard = canvasBoard.getContext('2d');
+
     window.edgePosition = canvasBoard.getBoundingClientRect();
-    // window.addEventListener('resize', function (){
-    //     edgePosition = canvasBoard.getBoundingClientRect();
-    // })
+    window.addEventListener('resize', function (){
+        window.edgePosition = canvasBoard.getBoundingClientRect();
+    })
 
     window.gameFrame = 0;
     window.score = 0;
@@ -41,6 +42,14 @@ window.addEventListener("DOMContentLoaded", () => {
         mouse.y = event.y - edgePosition.top;
     });
 
+    //
+    window.canvasBoard.addEventListener('click', function() {
+        if (score >= 10) {
+            score -= 10
+            life += 1
+            audioAddLife.play()
+        }
+    } )
 
     //game class control
     // document.canvasBoard.addEventListener('click', function startGame() {
@@ -53,11 +62,23 @@ window.addEventListener("DOMContentLoaded", () => {
     window.mouseMove = new MouseMove();
     const playerBubble = new PlayerBubble();
 
-    let audio = document.getElementById("myAudio");
+    //sound track
+    window.audioBackground = document.getElementById("audioBackground");
+    window.audioGameover = document.getElementById("audioGameover")
+    window.audioAddLife = document.getElementById("audioAddLife")
+    window.audioReduceLife = document.getElementById("audioReduceLife")
+    window.audioScore = document.getElementById("audioScore")
+    window.audioGarbShark = document.getElementById("audioGarbShark")
+    window.audioPause = document.getElementById("audioPause")
+
+
 
     function gameOverStatus() {
         if (life === 0) {
             gameOver = true;
+
+            audioGameover.play()
+            audioBackground.pause()
         }
     }
 
@@ -89,6 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ctxBoard.fillStyle = "black";
         ctxBoard.fillText('life: ' + life, canvasBoard.width / 2 - 50, 30, 500);
         // canvasBoard.getBoundingClientRect();
+
 
         gameOverStatus();
         if (gameOver === false) {

@@ -52,20 +52,19 @@ In addition, this project will include
     - [x] player x monster = lose 1 life
     - [x] garbage x monster = nothing (or maybe kill the monster?)
 
-- [ ] setting up the game view
+- [X] setting up the game view with sprite
 - [ ] choose the characters: Spongebob/Patrick Star
 - [X] setting up mouse move with the player to follow
 
 `Tuesday` 
-- [ ] setting up the 2D assets & music volumn function
+- [X] setting up the 2D assets & music volumn function
 - [ ] setting up the theme function: day/night version
 
 `Wednesday` 
-- [ ] add the list of score function for different items
 - [ ] polish the html & css 
 - [ ] polish up including README, live demo testing etc 
 
 `Thursday`
 - [ ] if have time, setting up additional function:
     - [ ] choose difficulty function
-    - [ ] choose the mouse effect
+    - [X] choose the mouse effect

@@ -14,12 +14,49 @@
         <!-- <div id="startScreen" class="screen" style="display:block">
             <button onclick="startGame()">Start Game</button>
         </div> -->
-        <img src="./assets/images/backgroundDay.png" id="background">
-        <canvas id="canvasBoard"></canvas>
+
+        <!-- <div class="theme"> Theme Switcher 
+            <div> -->
+                <img src="./assets/images/backgroundDay.png" id="background">
+                <canvas id="canvasBoard"></canvas>
+            <!-- </div> -->
+            
+            <!-- <div>
+                <img src="./assets/images/backgroundNight.webp" id="background">
+                <canvas id="canvasBoardNight"></canvas>
+            </div> -->
+
+        <!-- </div> -->
+
+
         
 
-        <audio id="myAudio" controls>
+        <audio id="audioBackground" controls>
             <source src="./assets/music/music.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="audioGameover">
+            <source src="./assets/music/gameover.wav" type="audio/wav">
+        </audio>
+
+        <audio id="audioAddLife">
+            <source src="./assets/music/audioAddLife.wav" type="audio/wav">
+        </audio>
+
+        <audio id="audioReduceLife">
+            <source src="./assets/music/audioReduceLife.wav" type="audio/wav">
+        </audio>
+
+        <audio id="audioGarbShark">
+            <source src="./assets/music/audioGarbShark.wav" type="audio/wav">
+        </audio>
+
+        <audio id="audioScore">
+            <source src="./assets/music/audioScore.wav" type="audio/wav">
+        </audio>
+
+        <audio id="audioPause">
+            <source src="./assets/music/audioPause.wav" type="audio/wav">
         </audio>
         
 

@@ -8,7 +8,7 @@ export const Monster = function Monster() {
     if (posMonster > 6) {
         this.x = 0 - this.radius;
         this.y = Math.random() * canvasBoard.height + 1 - this.radius;
-        this.speedX = (Math.random() * 20 - 9.5) / 5;
+        this.speedX = (Math.random() * 20 - 9.5) / 5 + 1;
         this.speedY = 0; //Math.random() * 10 / 2;
         this.spriteWidth = 608;
         this.spriteHeight = 372;
@@ -105,7 +105,7 @@ export const flowMonster = function flowMonster() {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 20 === 0 && arrMonster.length < 10) {
+    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
@@ -120,16 +120,16 @@ export const flowMonster = function flowMonster() {
     }
 
     for (let j = 0; j < arrMonster.length; j++) {
-        if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius - 5
+        if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius - 8
             && arrMonster[j].killLife === false) {
             life -= 1;
             arrMonster[j].killLife = true;
+            audioReduceLife.play()
 
             setTimeout(() => {
                 // console.log("test delay 1 sec")
                 arrMonster[j].killLife = false;
-            }, 1000
-            );
+            }, 1000);
 
         }
     }
