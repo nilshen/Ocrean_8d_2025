@@ -99,8 +99,10 @@
                 if (arrGarbage[j].distanceGarbage(arrMonster[i]) <= arrGarbage[j].radius + arrMonster[i].radius
                     && arrGarbage[j].killMonster === false) {
                     // arrMonster.splice(i, 1);
-                    score -= 1;
-                    audioGarbShark.play()
+                    if (score > 0){
+                        score -= 1;
+                        audioGarbShark.play()
+                    }
                     arrGarbage[j].killMonster = true  //if sliced the monster, then dont need to set the boolean. 
                 }
         }

@@ -8,37 +8,54 @@
     <script src="./dist/main.js"></script>
     <title>Ocean 8d</title>
 </head>
+
 <body>
-    <!-- <canvas id="canvasBoard"></canvas> -->
-    <h1>Ocean_8d</h1>
-        <!-- <div id="startScreen" class="screen" style="display:block">
-            <button onclick="startGame()">Start Game</button>
-        </div> -->
 
-        <!-- <div class="theme"> Theme Switcher 
-            <div> -->
-                <img src="./assets/images/backgroundDay.png" id="background">
-                <canvas id="canvasBoard"></canvas>
-            <!-- </div> -->
-            
-            <!-- <div>
-                <img src="./assets/images/backgroundNight.webp" id="background">
-                <canvas id="canvasBoardNight"></canvas>
-            </div> -->
+    <div id="starScreen" style="display:none">
+        <img src="./assets/images/backgroundHome.jpeg" id="backgroundStart">
+        <canvas id="canvasStart" width="1400" height="800"></canvas> -->
+    <div id="startMenu">
+        <h2>Welcome to Under the sea!</h2>
+        <ul>
+            <li>
+                PH1
+            </li>
+            <li>
+                PH2
+            </li>
+            <li>
+                PH3
+            </li>
+        </ul> 
+        </div> 
 
-        <!-- </div> -->
-        <button id="start">Start Game</button>
-        <br>
-        <button id="pause">Pause Game</button>
-        <br>
-        <!-- <div id="player">Choose Your Player <br>
+        <!-- <div id="gameView" style="display:block">
+        
+            <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
+            <canvas id="canvasBoard" width="1400" height="800"></canvas>
+        </div>  -->
+    </div>
+
+    <!-- <div id="player">Choose Your Player <br>
             <input type="radio" name="player" value="Spongebob" checked>Spongebob 
             <br>
             <input type="radio" name="player" value="PatrickStar">Patrick Star 
             <br>
         </div>
-     -->
+    -->
 
+    <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
+    <canvas id="canvasBoard" width="1400" height="800"></canvas>
+
+    <div>
+        <button id="start">Start Game</button>
+    </div>
+
+    <br>
+        <button id="pause">Pause Game</button>
+    <br>
+
+    <div class="audio">
         <audio id="audioBackground" controls auto loop>
             <source src="./assets/music/music.mp3" type="audio/mp3">
         </audio>
@@ -66,9 +83,23 @@
         <audio id="audioPause">
             <source src="./assets/music/audioPause.wav" type="audio/wav">
         </audio>
-        
+    </div>
 
 
 
 </body>
 </html>
+
+
+
+        <!-- <div class="theme"> Theme Switcher 
+            <div> -->
+
+            <!-- </div> -->
+            
+            <!-- <div>
+                <img src="./assets/images/backgroundNight.webp" id="background">
+                <canvas id="canvasBoardNight"></canvas>
+            </div> -->
+
+        <!-- </div> -->

@@ -80,18 +80,13 @@ window.addEventListener("DOMContentLoaded", () => {
             gamePause.innerHTML = 'Pause Game'
             animate()
         }
-        
-
     });
-
-
 
     //game class control
     // document.canvasBoard.addEventListener('click', function startGame() {
     //     window.player = new Player();
     //     const playerBubble = new PlayerBubble();
     // })
-
 
     window.player = new Player();
     window.mouseMove = new MouseMove();
@@ -105,8 +100,6 @@ window.addEventListener("DOMContentLoaded", () => {
     window.audioScore = document.getElementById("audioScore");
     window.audioGarbShark = document.getElementById("audioGarbShark");
     window.audioPause = document.getElementById("audioPause");
-
-    
 
     function gameOverStatus() {
         if (life === 0) {
@@ -138,18 +131,26 @@ window.addEventListener("DOMContentLoaded", () => {
         flowmouseMove(mouseMove);
 
         //score & life 
-        ctxBoard.fillStyle = "black";
+        ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
         ctxBoard.font = '30px serif';
-        ctxBoard.fillText('score: ' + score, canvasBoard.width / 2 - 50, 50, 500);
+        ctxBoard.fillText('Score: ' + score, canvasBoard.width / 2 - 50, 60, 500);
+        ctxBoard.font = '30px serif';
+        ctxBoard.fillText('Lives: ' + life, canvasBoard.width / 2 - 50, 30, 500);
+        //   ctxBoard.fillRect(j * 25, i * 25, 25, 25);
+        // ctxBoard.fillStyle = "blue";
+        // ctxBoard.font = '30px serif';
+        // ctxBoard.fillText('Score: ' + score, canvasBoard.width / 2 - 50, 50, 500);
 
-        ctxBoard.fillStyle = "black";
-        ctxBoard.fillText('life: ' + life, canvasBoard.width / 2 - 50, 30, 500);
+        // ctxBoard.fillStyle = "blue";
+        // ctxBoard.font = '30px serif';
+        // ctxBoard.fillText('Lives: ' + life, canvasBoard.width / 2 - 50, 30, 500);
         // canvasBoard.getBoundingClientRect();
-
 
         gameOverStatus();
         if (gameOver === false && pause === false) {
             requestAnimationFrame(animate);
+        } else {
+            ctxBoard.fillText('Great job! You recycled '+ score + ' garbage!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
         }
     }
 
