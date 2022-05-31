@@ -2,38 +2,62 @@
 window.arrMonster = [];
 
 export const Monster = function Monster() {
-    this.radius = 30;
-    const posMonster = Math.random() * 100 + 1;
-    if (posMonster > 70) {
+    this.radius = 40;
+    const posMonster = Math.floor(Math.random() * 10);
+    if (posMonster > 6) {
         this.x = 0 - this.radius;
         this.y = Math.random() * canvasBoard.height + 1 - this.radius;
         this.speedX = (Math.random() * 20 - 9.5) / 5;
         this.speedY = 0; //Math.random() * 10 / 2;
+        const random = Math.floor(Math.random() * 2 + 1);
+        switch (random) {
+            case 1:
+                this.image = m1;
+                break;
+            case 2:
+                this.image = m2;
+                break;
+        }
     }
-    else if (posMonster < 40) {
+    else if (posMonster < 4) {
         this.x = canvasBoard.width + this.radius;
         this.y = Math.random() * canvasBoard.height + 1;
         this.speedX = (Math.random() * 20 - 9.5) / 5;
         this.speedY = 0; //Math.random() * -10 / 2;
+        const random = Math.floor(Math.random() * 2 + 1);
+        switch (random) {
+            case 1:
+                this.image = m3;
+                break;
+            case 2:
+                this.image = m4;
+                break;
+
+        }
     }
-    else if (posMonster <= 70 && posMonster >= 40) {
+    else if (posMonster <= 6 && posMonster >= 4) {
         this.x = Math.random() * canvasBoard.width + 1;
         this.y = canvasBoard.height + this.radius;
         this.speedX = Math.random() * -10 / 4;
         this.speedY = Math.random() * -10 + 3;
+        const random = Math.floor(Math.random() * 3 + 1);
+                this.image = m5;
     }
 
     this.killLife = false;
-}
+};
 
 Monster.prototype.drawMonster = function () {
-    ctxBoard.fillStyle = 'red';
-    // ctxBoard.strokeStyle = 'yellow';
+    // ctxBoard.fillStyle = 'red';
+    // ctxBoard.strokeStyle = 'red';
     // ctxBoard.lineWidth = 5;
-    ctxBoard.beginPath();
-    ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctxBoard.fill();
+    // ctxBoard.beginPath();
+    // ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    // ctxBoard.fill();
     // ctxBoard.stroke();
+
+    ctxBoard.drawImage(this.image, this.x - 50, this.y - 35, 100, 70);
+
 };
 
 Monster.prototype.moveMonster = function () {
@@ -86,13 +110,16 @@ export const flowMonster = function flowMonster() {
 
         }
     }
-}
+};
 
+const m1 = new Image();
+const m2 = new Image();
+const m3 = new Image();
+const m4 = new Image();
+const m5 = new Image();
 
-
-
-
-
-
-
-// module.exports = Monster;
+m1.src = "./assets/images/m1.png";
+m2.src = "./assets/images/m2.png";
+m3.src = "./assets/images/m3.png";
+m4.src = "./assets/images/m4.png";
+m5.src = "./assets/images/m5.png";

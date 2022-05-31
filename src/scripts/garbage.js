@@ -13,7 +13,7 @@
         this.speedY = Math.random() * 3 + 2;
         this.killMonster = false; //if sliced the monster, then dont need to set the boolean.
 
-        const random = Math.floor(Math.random() * 15 + 1)
+        const random = Math.floor(Math.random() * 8 + 1)
         
         switch(random) {
             case 1:
@@ -40,27 +40,12 @@
             case 8:
                 this.image = image8;
                 break;
-            case 9:
-                this.image = image9;
-                break;
-            case 10:
-                this.image = image10;
-                break;
-            case 11:
-                this.image = image11;
-                break;
-            case 12:
-                this.image = image12;
-                break;
-            case 13:
-                this.image = image13;
-                break;
-            case 14:
-                this.image = image14;
-                break;
-            case 15:
-                this.image = image15;
-                break;
+            // case 9:
+            //     this.image = image9;
+            //     break;
+            // case 10:
+            //     this.image = image10;
+            //     break;
         } 
 
     Garbage.prototype.drawGarbage = function () {
@@ -113,7 +98,7 @@
                 if (arrGarbage[j].distanceGarbage(arrMonster[i]) <= arrGarbage[j].radius + arrMonster[i].radius
                     && arrGarbage[j].killMonster === false) {
                     // arrMonster.splice(i, 1);
-                    score -= 3;
+                    score -= 2;
                     arrGarbage[j].killMonster = true  //if sliced the monster, then dont need to set the boolean. 
                 }
         }
@@ -135,13 +120,13 @@ const image5 = new Image();
 const image6 = new Image();
 const image7 = new Image();
 const image8 = new Image();
-const image9 = new Image();
-const image10 = new Image();
-const image11 = new Image();
-const image12 = new Image();
-const image13 = new Image();
-const image14 = new Image();
-const image15 = new Image();
+// const image9 = new Image();
+// const image10 = new Image();
+// const image11 = new Image();
+// const image12 = new Image();
+// const image13 = new Image();
+// const image14 = new Image();
+// const image15 = new Image();
 
 image1.src = "./assets/images/g1.png"
 image2.src = "./assets/images/g2.png"
@@ -151,10 +136,10 @@ image5.src = "./assets/images/g5.png"
 image6.src = "./assets/images/g6.png"
 image7.src = "./assets/images/g7.png"
 image8.src = "./assets/images/g8.png"
-image9.src = "./assets/images/g9.png"
-image10.src = "./assets/images/g10.png"
-image11.src = "./assets/images/g11.png"
-image12.src = "./assets/images/g12.png"
-image13.src = "./assets/images/g13.png"
-image14.src = "./assets/images/g14.png"
-image15.src = "./assets/images/g15.png"
+// image9.src = "./assets/images/g9.png"
+// image10.src = "./assets/images/g10.png"
+// image11.src = "./assets/images/g11.png"
+// image12.src = "./assets/images/g12.png"
+// image13.src = "./assets/images/g13.png"
+// image14.src = "./assets/images/g14.png"
+// image15.src = "./assets/images/g15.png"
