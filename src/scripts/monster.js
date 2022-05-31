@@ -2,8 +2,9 @@
 window.arrMonster = [];
 
 export const Monster = function Monster() {
-    this.radius = 40;
+    this.radius = 50;
     const posMonster = Math.floor(Math.random() * 10);
+
     if (posMonster > 6) {
         this.x = 0 - this.radius;
         this.y = Math.random() * canvasBoard.height + 1 - this.radius;
@@ -69,11 +70,13 @@ Monster.prototype.drawMonster = function () {
     // ctxBoard.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     // ctxBoard.fill();
     // ctxBoard.stroke();
+    // let randomRow = Math.floor(Math.random() * 3)
 
-    ctxBoard.drawImage(this.image, this.frame * this.spriteWidth, 1 * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - this.spriteWidth / 6, this.y - this.spriteHeight / 6.5, this.width, this.height);
-
-    // ctxBoard.drawImage(m11, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight);
-
+    if (this.image !== m5) {
+        ctxBoard.drawImage(this.image, this.frame * this.spriteWidth, 1 * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - this.spriteWidth / 7, this.y - this.spriteHeight / 7, this.width, this.height);
+    }   else {
+        ctxBoard.drawImage(m5, this.x - 50, this.y - 50, 100, 100);
+    }
 };
 
 Monster.prototype.moveMonster = function () {
@@ -99,7 +102,7 @@ export const flowMonster = function flowMonster() {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 200 === 0) {
+    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
