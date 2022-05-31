@@ -9,13 +9,20 @@ export const Monster = function Monster() {
         this.y = Math.random() * canvasBoard.height + 1 - this.radius;
         this.speedX = (Math.random() * 20 - 9.5) / 5;
         this.speedY = 0; //Math.random() * 10 / 2;
+        this.spriteWidth = 608;
+        this.spriteHeight = 372;
+        this.width = this.spriteWidth / 3.5;
+        this.height = this.spriteHeight / 3.5;
+        this.frame = 0;
+
+
         const random = Math.floor(Math.random() * 2 + 1);
         switch (random) {
             case 1:
-                this.image = m1;
+                this.image = m11;
                 break;
             case 2:
-                this.image = m2;
+                this.image = m22;
                 break;
         }
     }
@@ -24,13 +31,19 @@ export const Monster = function Monster() {
         this.y = Math.random() * canvasBoard.height + 1;
         this.speedX = (Math.random() * 20 - 9.5) / 5;
         this.speedY = 0; //Math.random() * -10 / 2;
+        this.spriteWidth = 608;
+        this.spriteHeight = 372;
+        this.width = this.spriteWidth / 3.5;
+        this.height = this.spriteHeight / 3.5;
+        this.frame = 0;
+
         const random = Math.floor(Math.random() * 2 + 1);
         switch (random) {
             case 1:
-                this.image = m3;
+                this.image = m33;
                 break;
             case 2:
-                this.image = m4;
+                this.image = m44;
                 break;
 
         }
@@ -40,8 +53,9 @@ export const Monster = function Monster() {
         this.y = canvasBoard.height + this.radius;
         this.speedX = Math.random() * -10 / 4;
         this.speedY = Math.random() * -10 + 3;
-        const random = Math.floor(Math.random() * 3 + 1);
-                this.image = m5;
+
+        // const random = Math.floor(Math.random() * 3 + 1);
+        this.image = m5;
     }
 
     this.killLife = false;
@@ -56,13 +70,16 @@ Monster.prototype.drawMonster = function () {
     // ctxBoard.fill();
     // ctxBoard.stroke();
 
-    ctxBoard.drawImage(this.image, this.x - 50, this.y - 35, 100, 70);
+    ctxBoard.drawImage(this.image, this.frame * this.spriteWidth, 1 * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - this.spriteWidth / 6, this.y - this.spriteHeight / 6.5, this.width, this.height);
+
+    // ctxBoard.drawImage(m11, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight);
 
 };
 
 Monster.prototype.moveMonster = function () {
     this.x += this.speedX;
     this.y += this.speedY;
+    this.frame > 2 ? this.frame = 0 : this.frame++; 
 };
 
 Monster.prototype.distanceMonster = function (otherObject) {
@@ -112,14 +129,16 @@ export const flowMonster = function flowMonster() {
     }
 };
 
-const m1 = new Image();
-const m2 = new Image();
-const m3 = new Image();
-const m4 = new Image();
+
+
+const m11 = new Image();
+const m22 = new Image();
+const m33 = new Image();
+const m44 = new Image();
 const m5 = new Image();
 
-m1.src = "./assets/images/m1.png";
-m2.src = "./assets/images/m2.png";
-m3.src = "./assets/images/m3.png";
-m4.src = "./assets/images/m4.png";
+m11.src = "./assets/images/m11.png";
+m22.src = "./assets/images/m22.png";
+m33.src = "./assets/images/m33.png";
+m44.src = "./assets/images/m44.png";
 m5.src = "./assets/images/m5.png";
