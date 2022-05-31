@@ -1,9 +1,27 @@
-//Player 
+// window.addEventListener("DOMContentLoaded", () => {
+//Player selection
+// window.playerSelection = document.querySelector('input[name="player"]:checked').value;
 const playerImageLeft = new Image();
 const playerImageRight = new Image();
-playerImageLeft.src = "./assets/images/playerLeft.png";
-playerImageRight.src = "./assets/images/playerRight.png";
+// function radioSelection() {
+//     let ele = document.getElementsByName('player');
+//     for (let i = 0; i < ele.length; i++ ) {
+//         if (ele[i].checked)
+//         return ele[i].value
+//         console.log(ele[i])
+//     }
+// }
 
+    // if (playerSelection === 'Spongebob') {
+        playerImageLeft.src = "./assets/images/player1Left.png";
+        playerImageRight.src = "./assets/images/player1Right.png";
+    // } else {
+        // playerImageLeft.src = "./assets/images/player2Left.png";
+        // playerImageRight.src = "./assets/images/player2Right.png";
+    // }
+// })
+
+//Player 
 export const Player = function Player() {
     // debugger
     // this.canvasBoard = canvasBoard
@@ -34,9 +52,9 @@ Player.prototype.drawPlayer = function () {
     // ctxBoard.fillRect(this.x, this.y, this.radius, 10);
 
     if (this.x > mouse.x) {
-        ctxBoard.drawImage(playerImageLeft, this.x - 40, this.y - 35, 80, 80);
+        ctxBoard.drawImage(playerImageLeft, this.x - 50, this.y - 40, 90, 90);
     } else {
-        ctxBoard.drawImage(playerImageRight, this.x - 40, this.y - 35, 80, 80);
+        ctxBoard.drawImage(playerImageRight, this.x - 50, this.y - 40, 90, 90);
     }
 
 };
@@ -51,8 +69,6 @@ export const flowPlayer = function flowPlayer(player) {
 const arrBubble = [];
 const bubbleImage = new Image();
 bubbleImage.src = './assets/images/bubble.png';
-
-
 
 export const PlayerBubble = function PlayerBubble() {
     this.x = player.x;
@@ -118,6 +134,4 @@ export const playerBubbleEffect = function playerBubbleEffect (player) {
             arrBubble.splice(i, 1);
         }
     }
-
-
 };

@@ -59,6 +59,8 @@ In addition, this project will include
 `Tuesday` 
 - [X] setting up the 2D assets & music volumn function
 - [ ] setting up the theme function: day/night version
+- [x] setting up start new game, go back to homepage
+- [x] setting up pause game / resume game
 
 `Wednesday` 
 - [ ] polish the html & css 

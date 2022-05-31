@@ -10,10 +10,9 @@ import { flowPlayer } from "./scripts/player";
 import { PlayerBubble } from "./scripts/player";
 import { playerBubbleEffect } from "./scripts/player";
 
-import { flowmouseMove, MouseMove } from "./scripts/mouseMove"
+import { flowmouseMove, MouseMove } from "./scripts/mouseMove";
 
 window.addEventListener("DOMContentLoaded", () => {
-
 
     document.canvasBoard = document.getElementById("canvasBoard");
     canvasBoard.width = 1400;
@@ -21,9 +20,9 @@ window.addEventListener("DOMContentLoaded", () => {
     window.ctxBoard = canvasBoard.getContext('2d');
 
     window.edgePosition = canvasBoard.getBoundingClientRect();
-    window.addEventListener('resize', function (){
+    window.addEventListener('resize', function () {
         window.edgePosition = canvasBoard.getBoundingClientRect();
-    })
+    });
 
     window.gameFrame = 0;
     window.score = 0;
@@ -42,14 +41,50 @@ window.addEventListener("DOMContentLoaded", () => {
         mouse.y = event.y - edgePosition.top;
     });
 
-    //
-    window.canvasBoard.addEventListener('click', function() {
+    //game function: 10 scores for 1 life
+    window.canvasBoard.addEventListener('click', function () {
         if (score >= 10) {
-            score -= 10
-            life += 1
-            audioAddLife.play()
+            score -= 10;
+            life += 1;
+            audioAddLife.play();
         }
-    } )
+    });
+
+    //start game
+    let gameStart = document.getElementById('start');
+    let start = false
+    gameStart.addEventListener('click', function () {
+        if (start === false) {
+            animate();
+            start = true
+            audioBackground.play()
+            gameStart.innerHTML ='Restart'
+        } else {
+            window.location.reload();
+        }
+    });
+
+
+    //pause game
+    let gamePause = document.getElementById('pause');
+    let pause = false;
+
+    gamePause.addEventListener('click', function () {
+    
+        if (pause === false) {
+            pause = true;
+            gamePause.innerHTML = 'Resume Game'
+            audioPause.play();
+        } else {
+            pause = false;
+            gamePause.innerHTML = 'Pause Game'
+            animate()
+        }
+        
+
+    });
+
+
 
     //game class control
     // document.canvasBoard.addEventListener('click', function startGame() {
@@ -57,28 +92,28 @@ window.addEventListener("DOMContentLoaded", () => {
     //     const playerBubble = new PlayerBubble();
     // })
 
-    
+
     window.player = new Player();
     window.mouseMove = new MouseMove();
     const playerBubble = new PlayerBubble();
 
     //sound track
     window.audioBackground = document.getElementById("audioBackground");
-    window.audioGameover = document.getElementById("audioGameover")
-    window.audioAddLife = document.getElementById("audioAddLife")
-    window.audioReduceLife = document.getElementById("audioReduceLife")
-    window.audioScore = document.getElementById("audioScore")
-    window.audioGarbShark = document.getElementById("audioGarbShark")
-    window.audioPause = document.getElementById("audioPause")
+    window.audioGameover = document.getElementById("audioGameover");
+    window.audioAddLife = document.getElementById("audioAddLife");
+    window.audioReduceLife = document.getElementById("audioReduceLife");
+    window.audioScore = document.getElementById("audioScore");
+    window.audioGarbShark = document.getElementById("audioGarbShark");
+    window.audioPause = document.getElementById("audioPause");
 
-
+    
 
     function gameOverStatus() {
         if (life === 0) {
             gameOver = true;
 
-            audioGameover.play()
-            audioBackground.pause()
+            audioGameover.play();
+            audioBackground.pause();
         }
     }
 
@@ -87,7 +122,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
         //player
-        flowPlayer(player)
+        flowPlayer(player);
 
         //playerBubble
         playerBubbleEffect(player);
@@ -113,11 +148,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
         gameOverStatus();
-        if (gameOver === false) {
+        if (gameOver === false && pause === false) {
             requestAnimationFrame(animate);
         }
     }
-    animate();
+
 
 
 
