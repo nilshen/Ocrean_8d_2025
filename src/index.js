@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
         flowPlayer(player)
 
         //playerBubble
-        playerBubbleEffect();
+        playerBubbleEffect(player);
 
         // Garbage
         flowGarbage();

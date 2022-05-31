@@ -55,7 +55,7 @@
         // ctxBoard.fill();
         // ctxBoard.closePath();
 
-            ctxBoard.drawImage(this.image, this.x-23, this.y-22, 45, 45)
+            ctxBoard.drawImage(this.image, this.x-23, this.y-22, 50, 53)
     
             // ctxBoard.drawImage(g2, this.x-20, this.y-25, 42, 45)
 

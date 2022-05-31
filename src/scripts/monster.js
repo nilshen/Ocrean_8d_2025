@@ -52,11 +52,14 @@ export const Monster = function Monster() {
     else if (posMonster <= 6 && posMonster >= 4) {
         this.x = Math.random() * canvasBoard.width + 1;
         this.y = canvasBoard.height + this.radius;
-        this.speedX = Math.random() * -10 / 4;
+        this.speedX = (Math.random() * -20 + 9.5) / 4;
         this.speedY = Math.random() * -10 + 3;
 
-        // const random = Math.floor(Math.random() * 3 + 1);
-        this.image = m5;
+        if (this.speedX < 0) {
+            this.image = m5;
+        } else {
+            this.image = m6;
+        }
     }
 
     this.killLife = false;
@@ -72,17 +75,17 @@ Monster.prototype.drawMonster = function () {
     // ctxBoard.stroke();
     // let randomRow = Math.floor(Math.random() * 3)
 
-    if (this.image !== m5) {
+    if (this.image !== m5 && this.image !== m6) {
         ctxBoard.drawImage(this.image, this.frame * this.spriteWidth, 1 * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - this.spriteWidth / 7, this.y - this.spriteHeight / 7, this.width, this.height);
-    }   else {
-        ctxBoard.drawImage(m5, this.x - 50, this.y - 50, 100, 100);
+    } else {
+        ctxBoard.drawImage(this.image, this.x - 50, this.y - 50, 100, 100);
     }
 };
 
 Monster.prototype.moveMonster = function () {
     this.x += this.speedX;
     this.y += this.speedY;
-    this.frame > 2 ? this.frame = 0 : this.frame++; 
+    this.frame > 2 ? this.frame = 0 : this.frame++;
 };
 
 Monster.prototype.distanceMonster = function (otherObject) {
@@ -102,7 +105,7 @@ export const flowMonster = function flowMonster() {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
+    if (gameFrame % 20 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
@@ -117,7 +120,7 @@ export const flowMonster = function flowMonster() {
     }
 
     for (let j = 0; j < arrMonster.length; j++) {
-        if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius
+        if (arrMonster[j].distanceMonster(player) <= arrMonster[j].radius + player.radius - 5
             && arrMonster[j].killLife === false) {
             life -= 1;
             arrMonster[j].killLife = true;
@@ -139,9 +142,11 @@ const m22 = new Image();
 const m33 = new Image();
 const m44 = new Image();
 const m5 = new Image();
+const m6 = new Image();
 
 m11.src = "./assets/images/m11.png";
 m22.src = "./assets/images/m22.png";
 m33.src = "./assets/images/m33.png";
 m44.src = "./assets/images/m44.png";
 m5.src = "./assets/images/m5.png";
+m6.src = "./assets/images/m6.png";

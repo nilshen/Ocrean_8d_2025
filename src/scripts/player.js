@@ -52,34 +52,52 @@ const arrBubble = [];
 const bubbleImage = new Image();
 bubbleImage.src = './assets/images/bubble.png';
 
+
+
 export const PlayerBubble = function PlayerBubble() {
     this.x = player.x;
     this.y = player.y - player.radius;
     this.size = 15;
     this.speedX = Math.random() * 2 - 1;
     this.speedY = Math.random() * 2 + 1;
-    this.color = 'black';
+    this.color = 'blue';
+    // this.spriteWidth = 512;
+    // this.spriteHeight = 512;
+    // this.Width = this.spriteWidth / 3;
+    // this.Height = this.spriteHeight / 3;
+    // this.frame = 0;
+    // this.image = bubbleImage;
 };
 
 PlayerBubble.prototype.moveplayerBubble = function () {
     this.x += this.speedX;
     this.y -= this.speedY;
-    if (this.size > 0.2) this.size -= 0.1;
+
+    // for (let i = 0; i < arrBubble.length; i++) {
+    //     if (arrBubble[i].frame > 2) {
+    //         arrBubble.splice(i, 1);
+    //     } else {
+    //         arrBubble[i].frame += 1;
+    //     }
+    // }
 };
 
 PlayerBubble.prototype.drawplayerBubble = function () {
 
-    // ctxBoard.fillStyle = this.color;
+    // ctxBoard.fillStyle = 'red';
+    // ctxBoard.strokeStyle = 'red';
+    // ctxBoard.lineWidth = 1;
     // ctxBoard.beginPath();
     // ctxBoard.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     // ctxBoard.fill();
-    // ctxBoard.closePath();
+    // ctxBoard.stroke();
 
-    ctxBoard.drawImage(bubbleImage, this.x - 17, this.y - 17, 35, 35);
+    ctxBoard.drawImage(bubbleImage, this.x - 17, this.y - 17, 50, 50);
+    // ctxBoard.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, 50, 50) 
 
 };
 
-export const playerBubbleEffect = PlayerBubble.prototype.playerBubbleEffect = function () {
+export const playerBubbleEffect = function playerBubbleEffect (player) {
     if (gameFrame % 20 === 0) {
         for (let i = 0; i < 1; i++) {
             arrBubble.push(new PlayerBubble());
