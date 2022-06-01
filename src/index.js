@@ -125,7 +125,8 @@ window.canvasBoard.addEventListener('click', function () {
     window.mouseMove = new MouseMove();
     // window.aquaman = new Aquaman();
     const playerBubble = new PlayerBubble();
-    const fps = 100
+    // const fps = 100
+    
     //sound track
     window.audioBackground = document.getElementById("audioBackground");
     window.audioGameover = document.getElementById("audioGameover");
