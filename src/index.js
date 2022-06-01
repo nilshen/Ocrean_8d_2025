@@ -72,10 +72,13 @@ window.canvasBoard.addEventListener('click', function () {
     let start = false
     gameStart.addEventListener('click', function () {
         if (start === false) {
-            animate();
-            start = true
-            show()
-            audioBackground.play()
+            audioStart.play()
+            setTimeout(()=>{
+                animate();
+                start = true
+                show()
+                audioBackground.play()
+            },1500)
         } 
     });
 
@@ -133,6 +136,7 @@ window.canvasBoard.addEventListener('click', function () {
     window.audioScore = document.getElementById("audioScore");
     window.audioGarbShark = document.getElementById("audioGarbShark");
     window.audioPause = document.getElementById("audioPause");
+    window.audioStart = document.getElementById("audioStart");
 
     //volumn control
     // function thisVolume(volume_value) { 
