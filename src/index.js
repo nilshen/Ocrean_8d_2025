@@ -4,8 +4,6 @@ import { flowGarbage } from "./scripts/garbage";
 import { Monster } from "./scripts/monster";
 import { flowMonster } from "./scripts/monster";
 
-// import { Aquaman, flowAquaman } from "./scripts/special";
-
 import { Player } from "./scripts/player";
 import { flowPlayer } from "./scripts/player";
 
@@ -127,7 +125,7 @@ window.canvasBoard.addEventListener('click', function () {
     window.mouseMove = new MouseMove();
     // window.aquaman = new Aquaman();
     const playerBubble = new PlayerBubble();
-
+    const fps = 100
     //sound track
     window.audioBackground = document.getElementById("audioBackground");
     window.audioGameover = document.getElementById("audioGameover");
@@ -204,7 +202,9 @@ window.canvasBoard.addEventListener('click', function () {
         window.edgePosition = canvasBoard.getBoundingClientRect();
         gameOverStatus();
         if (gameOver === false && pause === false) {
-            requestAnimationFrame(animate);
+            setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, 18)
         } else if (gameOver === true){
             ctxBoard.fillText('Great job! You recycled '+ score + ' garbage!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
         }

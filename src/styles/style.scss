@@ -1,5 +1,14 @@
+@import "./styles/style.scss";
+
+@font-face {
+    font-family: myFont;
+    src: url('../assets/font/Parisish.ttf') format('truetype');
+    
+}
+
 .body{
     position: relative;
+    margin: 0 auto;
 }
 
 .sticky {
@@ -13,7 +22,7 @@
 .flexbox-container {
     position:sticky;
     display: flex;
-
+    font-family: myFont;
     flex-direction: row;
     
     justify-content:space-evenly;
@@ -21,24 +30,25 @@
     align-items:baseline;
 }
 
+
+
 h1 {
     font-size:6vh;
+    font-family: myFont;
 }
 
 h2 {
     font-size:4vh;
+    font-family: myFont;
 }
 
 #audioBackground{
-    position:fixed;
-    right:30px;
-    top:30px;
-    width: 240px;
+    top: 10px;
+    right: 10px; 
 }
 
 .home {
     position: absolute;
-    top: 110px;
     left: 200px;
     width:1400px;
     height:800px;
@@ -79,7 +89,7 @@ h2 {
     font-family: myFont;
     font-size:xx-large;
     position: absolute;
-    bottom: 8.0%;
+    bottom: -77px;
     left: 41%;
 }
 
@@ -96,27 +106,37 @@ h2 {
 
 
 #backpic {
-    display: flex;
-    /* position: fixed; */
-    width: 100%;
-    height:fit-content;
+    // position: fixed;
+    // display: flex;
+    // position: fixed;
+    width: 1900px;
+    height:100%;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
     background-size:cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-attachment: fixed;
 }
 
+// #player{
+//     position: absolute;
+//     top: 80px;
+//     left: 50px;
+// }
+
+// #backpic {
+//     background-image: url("adobe-252661691.jpeg");
+//     background-repeat: no-repeat;
+//     height: 100%;
+//     background-position: center;
+//     background-size: cover;
+// }
 
 
 
-@font-face {
-    font-family: myFont;
-    src: url('../assets/font/Parisish.ttf') format('truetype');
-    
-}
+
 
 $color: #0cf;
 
@@ -161,4 +181,21 @@ $color: #0cf;
     width: 100%;
     }
 }
+}
+
+
+#navBar {
+    position: absolute;
+    top: -3%;
+    right: 0px;
+}
+
+#navBar ul {
+    display: flex;
+}
+
+i {
+    margin: 3px;
+    padding: 5px;
+    cursor: pointer;
 }
