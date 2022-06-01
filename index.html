@@ -11,56 +11,64 @@
 
 <body>
 
-    <div id="starScreen" style="display:none">
-        <img src="./assets/images/backgroundHome.jpeg" id="backgroundStart">
-        <canvas id="canvasStart" width="1400" height="800"></canvas> -->
-    <div id="startMenu">
-        <h2>Welcome to Under the sea!</h2>
-        <ul>
-            <li>
-                PH1
-            </li>
-            <li>
-                PH2
-            </li>
-            <li>
-                PH3
-            </li>
-        </ul> 
-        </div> 
+    <div class="menu">
+        <div class="flexbox-container">
+            <h1>Ocean 8d(aid)</h1>
+            <h2>menu bar</h2>
 
-        <!-- <div id="gameView" style="display:block">
-        
+
+
+
+            <div class="flexbox-flex3">
+                <audio id="audioBackground" controls auto loop>
+                    <source src="./assets/music/music.mp3" type="audio/mp3">
+                </audio>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+
+    <div class="home" style="display:block">
+        <div>
+            <img src="./assets/images/backgroundHome.jpeg" id="backgroundHome">
+            <canvas id="canvasHome" width="1400" height="800"></canvas>
+        </div>
+
+        <div>
+            <button id="start">Start Game</button>
+        </div>
+    </div>
+
+    <div class="board" style="display:none">
+        <div>
             <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
             <canvas id="canvasBoard" width="1400" height="800"></canvas>
-        </div>  -->
-    </div>
-
-    <!-- <div id="player">Choose Your Player <br>
-            <input type="radio" name="player" value="Spongebob" checked>Spongebob 
-            <br>
-            <input type="radio" name="player" value="PatrickStar">Patrick Star 
-            <br>
         </div>
-    -->
 
-    <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
-    <canvas id="canvasBoard" width="1400" height="800"></canvas>
+        <div>
+            <button id="restart">Restart Game</button>
+        </div>
+        <div>
+            <button id="pause">Pause Game</button>
+        </div>
+
+
+    </div>
 
     <div>
-        <button id="start">Start Game</button>
+        <img src="./assets/images/Background Pics/NYC_background.jpg" id="backpic">
+
     </div>
 
-    <br>
-        <button id="pause">Pause Game</button>
-    <br>
 
     <div class="audio">
-        <audio id="audioBackground" controls auto loop>
-            <source src="./assets/music/music.mp3" type="audio/mp3">
-        </audio>
 
-        <audio id="audioGameover">
+        <audio id="audioGameover" constrols>
             <source src="./assets/music/gameover.wav" type="audio/wav">
         </audio>
 
@@ -103,3 +111,13 @@
             </div> -->
 
         <!-- </div> -->
+
+
+
+            <!-- <div id="player">Choose Your Player <br>
+            <input type="radio" name="player" value="Spongebob" checked>Spongebob 
+            <br>
+            <input type="radio" name="player" value="PatrickStar">Patrick Star 
+            <br>
+        </div>
+    -->

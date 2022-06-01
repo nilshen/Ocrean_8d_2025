@@ -50,6 +50,23 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //home menu switch
+    function show() {
+        let div1 = document.querySelector('.board');
+        let div2 = document.querySelector('.home');
+    
+        if (div1.style.display == "block") {
+            div1.style.display = "none";
+            div2.style.display = "block";
+        } else {
+            div1.style.display = "block";
+            div2.style.display = "none";
+        }
+    }
+
+
+
+
     //start game
     let gameStart = document.getElementById('start');
     let start = false
@@ -57,13 +74,18 @@ window.addEventListener("DOMContentLoaded", () => {
         if (start === false) {
             animate();
             start = true
+            show()
             audioBackground.play()
-            gameStart.innerHTML ='Restart'
-        } else {
+        } 
+    });
+
+    //restart game
+    let gameRestart = document.getElementById('restart');
+    gameRestart.addEventListener('click', function () {
+        if (start === true) {
             window.location.reload();
         }
     });
-
 
     //pause game
     let gamePause = document.getElementById('pause');
@@ -133,10 +155,10 @@ window.addEventListener("DOMContentLoaded", () => {
         //score & life 
         ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
         ctxBoard.font = '30px serif';
-        ctxBoard.fillText('Score: ' + score, canvasBoard.width / 2 - 50, 60, 500);
+        ctxBoard.fillText('Score: ' + score, 10, 60, 500);
         ctxBoard.font = '30px serif';
-        ctxBoard.fillText('Lives: ' + life, canvasBoard.width / 2 - 50, 30, 500);
-        //   ctxBoard.fillRect(j * 25, i * 25, 25, 25);
+        ctxBoard.fillText('Lives: ' + life, 10, 30, 500);
+        // ctxBoard.fillRect(j * 25, i * 25, 25, 25);
         // ctxBoard.fillStyle = "blue";
         // ctxBoard.font = '30px serif';
         // ctxBoard.fillText('Score: ' + score, canvasBoard.width / 2 - 50, 50, 500);
@@ -145,11 +167,11 @@ window.addEventListener("DOMContentLoaded", () => {
         // ctxBoard.font = '30px serif';
         // ctxBoard.fillText('Lives: ' + life, canvasBoard.width / 2 - 50, 30, 500);
         // canvasBoard.getBoundingClientRect();
-
+        window.edgePosition = canvasBoard.getBoundingClientRect();
         gameOverStatus();
         if (gameOver === false && pause === false) {
             requestAnimationFrame(animate);
-        } else {
+        } else if (gameOver === true){
             ctxBoard.fillText('Great job! You recycled '+ score + ' garbage!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
         }
     }
