@@ -181,3 +181,20 @@ $color: #0cf;
     }
 }
 }
+
+
+#navBar {
+    position: absolute;
+    top: -3%;
+    right: 0px;
+}
+
+#navBar ul {
+    display: flex;
+}
+
+i {
+    margin: 3px;
+    padding: 5px;
+    cursor: pointer;
+}

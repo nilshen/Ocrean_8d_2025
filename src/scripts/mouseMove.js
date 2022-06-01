@@ -27,16 +27,17 @@ MouseMove.prototype.drawmouseMove = function () {
     // ctxBoard.fill();
     // ctxBoard.closePath();
     // ctxBoard.fillRect(this.x, this.y, this.radius, 10);
-
-    ctxBoard.drawImage(mouseMoveImage, this.x - 40, this.y - 35, 80, 80);
-
+    // if (this.x !== mouse.x || this.y !== mouse.y) {
+        ctxBoard.drawImage(mouseMoveImage, this.x-50, this.y-50, 80, 80);
+    // }
     
 
 };
 
 export const flowmouseMove = function flowmouseMove(mouseMove) {
-    mouseMove.drawmouseMove();
-    mouseMove.movemouseMove();
+        mouseMove.drawmouseMove();
+        mouseMove.movemouseMove();
+
 };
 
 

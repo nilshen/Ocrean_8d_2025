@@ -73,9 +73,9 @@ window.canvasBoard.addEventListener('click', function () {
     gameStart.addEventListener('click', function () {
         if (start === false) {
             audioStart.play()
+            start = true
             setTimeout(()=>{
                 animate();
-                start = true
                 show()
                 audioBackground.play()
             },1500)
