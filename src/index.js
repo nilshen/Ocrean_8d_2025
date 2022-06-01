@@ -112,9 +112,9 @@ window.canvasBoard.addEventListener('click', function () {
 
             audioGameover.play();
             audioBackground.pause();
-            if (score > 1) {
+            if (score > 19) {
                 ctxBoard.fillText('Great job! You recycled '+ score + ' garbages!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
-            } else if (score < 10 && score > 1 ){
+            } else if (score < 20 && score > 1 ){
                 ctxBoard.fillText('Well done, you recycled '+ score + ' garbages!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             } else (
                 ctxBoard.fillText('Nice try... You recycled '+ score + ' garbage!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
