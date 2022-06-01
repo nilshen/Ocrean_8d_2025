@@ -1,3 +1,7 @@
+.body{
+    position: relative;
+}
+
 .sticky {
 	position: -webkit-sticky;
 	position: sticky;
@@ -17,18 +21,23 @@
     align-items:baseline;
 }
 
+
+
 h1 {
-    font-size:5vh;
+    font-size:6vh;
 }
 
 h2 {
     font-size:4vh;
 }
 
+
+
 #audioBackground{
     position:fixed;
-    left: 80%;
-    top: 0%;
+    right:30px;
+    top:30px;
+    width: 240px;
 }
 
 .home {
@@ -48,22 +57,24 @@ h2 {
 }
 
 #canvasHome {
-    position: fixed;
+    position: absolute;
+    margin: 0;
     border: 13px solid rgb(223, 228, 228);
 }
 #canvasBoard {
-    position:fixed;
+    position:absolute;
     border: 13px solid rgb(223, 228, 228);
 }
 
 #backgroundHome {
-    position: fixed;
+    position: absolute;
+    margin: 0;
     width:1420px;
     height:820px;
 }
 
 #backgroundBoard {
-    position:fixed;
+    position:absolute;
     width:1420px;
     height:820px;
 }
@@ -71,27 +82,21 @@ h2 {
 #start{
     font-family: myFont;
     font-size:xx-large;
-    position: fixed;
-    bottom: 10.5%;
+    position: absolute;
+    bottom: 8.0%;
     left: 41%;
 }
 
 #restart{
-    position: fixed;
-    top: 124px;
-    left: 11.3%;
+    position: absolute;
+    top: 14px;
+    left: 13px;
 }
 #pause{
-    position: fixed;
-    top: 124px;
-    left: 74.6%;
+    position: absolute;
+    top: 14px;
+    right:-13px;
 }
-
-#audioBackground {
-    position: sticky;
-    width: 240px;
-}
-
 
 
 #backpic {

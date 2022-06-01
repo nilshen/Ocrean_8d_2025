@@ -1,6 +1,10 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+.body {
+  position: relative;
+}
+
 .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -18,7 +22,7 @@
 }
 
 h1 {
-  font-size: 5vh;
+  font-size: 6vh;
 }
 
 h2 {
@@ -27,8 +31,9 @@ h2 {
 
 #audioBackground {
   position: fixed;
-  left: 80%;
-  top: 0%;
+  right: 30px;
+  top: 30px;
+  width: 240px;
 }
 
 .home {
@@ -48,23 +53,25 @@ h2 {
 }
 
 #canvasHome {
-  position: fixed;
+  position: absolute;
+  margin: 0;
   border: 13px solid rgb(223, 228, 228);
 }
 
 #canvasBoard {
-  position: fixed;
+  position: absolute;
   border: 13px solid rgb(223, 228, 228);
 }
 
 #backgroundHome {
-  position: fixed;
+  position: absolute;
+  margin: 0;
   width: 1420px;
   height: 820px;
 }
 
 #backgroundBoard {
-  position: fixed;
+  position: absolute;
   width: 1420px;
   height: 820px;
 }
@@ -72,26 +79,21 @@ h2 {
 #start {
   font-family: myFont;
   font-size: xx-large;
-  position: fixed;
-  bottom: 10.5%;
+  position: absolute;
+  bottom: 8%;
   left: 41%;
 }
 
 #restart {
-  position: fixed;
-  top: 124px;
-  left: 11.3%;
+  position: absolute;
+  top: 14px;
+  left: 13px;
 }
 
 #pause {
-  position: fixed;
-  top: 124px;
-  left: 74.6%;
-}
-
-#audioBackground {
-  position: sticky;
-  width: 240px;
+  position: absolute;
+  top: 14px;
+  right: -13px;
 }
 
 #backpic {
