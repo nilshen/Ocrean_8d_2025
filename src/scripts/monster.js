@@ -7,13 +7,13 @@ export const Monster = function Monster() {
 
     if (posMonster > 6) {
         this.x = 0 - this.radius;
-        this.y = Math.random() * canvasBoard.height + 1 - this.radius;
         this.speedX = (Math.random() * 20 - 9.5) / 5 + 1;
         this.speedY = 0; //Math.random() * 10 / 2;
         this.spriteWidth = 608;
         this.spriteHeight = 372;
         this.width = this.spriteWidth / 3.5;
-        this.height = this.spriteHeight / 3.5;
+        this.height = this.spriteHeight / 3.7;
+        this.y = Math.floor(Math.random() * 7) * this.height + this.radius;
         this.frame = 0;
 
 
@@ -29,13 +29,13 @@ export const Monster = function Monster() {
     }
     else if (posMonster < 4) {
         this.x = canvasBoard.width + this.radius;
-        this.y = Math.random() * canvasBoard.height + 1;
         this.speedX = (Math.random() * 20 - 9.5) / 5;
         this.speedY = 0; //Math.random() * -10 / 2;
         this.spriteWidth = 608;
         this.spriteHeight = 372;
         this.width = this.spriteWidth / 3.5;
-        this.height = this.spriteHeight / 3.5;
+        this.height = this.spriteHeight / 3.7;
+        this.y = Math.floor(Math.random() * 7) * this.height + this.radius;
         this.frame = 0;
 
         const random = Math.floor(Math.random() * 2 + 1);

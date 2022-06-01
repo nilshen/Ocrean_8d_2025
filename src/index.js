@@ -4,6 +4,8 @@ import { flowGarbage } from "./scripts/garbage";
 import { Monster } from "./scripts/monster";
 import { flowMonster } from "./scripts/monster";
 
+// import { Aquaman, flowAquaman } from "./scripts/special";
+
 import { Player } from "./scripts/player";
 import { flowPlayer } from "./scripts/player";
 
@@ -41,14 +43,15 @@ window.addEventListener("DOMContentLoaded", () => {
         mouse.y = event.y - edgePosition.top;
     });
 
-    //game function: 10 scores for 1 life
-    window.canvasBoard.addEventListener('click', function () {
-        if (score >= 10) {
-            score -= 10;
-            life += 1;
-            audioAddLife.play();
-        }
-    });
+
+//game function: 10 scores for 1 life
+window.canvasBoard.addEventListener('click', function () {
+    if (score >= 10) {
+        score -= 10;
+        life += 1;
+        audioAddLife.play();
+    }
+});
 
     //home menu switch
     function show() {
@@ -63,9 +66,6 @@ window.addEventListener("DOMContentLoaded", () => {
             div2.style.display = "none";
         }
     }
-
-
-
 
     //start game
     let gameStart = document.getElementById('start');
@@ -104,6 +104,16 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //gameover status
+    function gameOverStatus() {
+        if (life === 0) {
+            gameOver = true;
+
+            audioGameover.play();
+            audioBackground.pause();
+        }
+    }
+
     //game class control
     // document.canvasBoard.addEventListener('click', function startGame() {
     //     window.player = new Player();
@@ -112,6 +122,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     window.player = new Player();
     window.mouseMove = new MouseMove();
+    // window.aquaman = new Aquaman();
     const playerBubble = new PlayerBubble();
 
     //sound track
@@ -123,14 +134,33 @@ window.addEventListener("DOMContentLoaded", () => {
     window.audioGarbShark = document.getElementById("audioGarbShark");
     window.audioPause = document.getElementById("audioPause");
 
-    function gameOverStatus() {
-        if (life === 0) {
-            gameOver = true;
-
-            audioGameover.play();
-            audioBackground.pause();
-        }
-    }
+    //volumn control
+    // function thisVolume(volume_value) { 
+    //     var myvideo = document.getElementById("myvid"); 
+    //     document.getElementById("vol").innerHTML=volume_value; 
+    //     myvideo.volume = volume_value / 100; 
+    // }
+    // var ppbutton = document.getElementById("vidbutton");
+    //     ppbutton.addEventListener("click", playPause);
+    //     myVideo = document.getElementById("myvid");
+    // function playPause() { 
+    //     if (myVideo.paused) {
+    //         myVideo.play();
+    //         ppbutton.innerHTML = "Pause";
+    //         }
+    //     else  {
+    //         myVideo.pause(); 
+    //         ppbutton.innerHTML = "Play";
+    //         }
+    // } 
+    // function thisVolume(volume_value)
+    //     {
+    //         var myvideo = document.getElementById("myvid");
+    //         document.getElementById("vol").innerHTML=volume_value;
+    //         myvideo.volume = volume_value / 100;
+            
+    // }
+    
 
 
     function animate() {
@@ -155,9 +185,9 @@ window.addEventListener("DOMContentLoaded", () => {
         //score & life 
         ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
         ctxBoard.font = '30px serif';
-        ctxBoard.fillText('Score: ' + score, 10, 60, 500);
+        ctxBoard.fillText('Score: ' + score, canvasBoard.width/2 - 50, 60, 500);
         ctxBoard.font = '30px serif';
-        ctxBoard.fillText('Lives: ' + life, 10, 30, 500);
+        ctxBoard.fillText('Lives: ' + life, canvasBoard.width/2 - 50, 30, 500);
         // ctxBoard.fillRect(j * 25, i * 25, 25, 25);
         // ctxBoard.fillStyle = "blue";
         // ctxBoard.font = '30px serif';

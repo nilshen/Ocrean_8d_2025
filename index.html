@@ -11,26 +11,20 @@
 
 <body>
 
-    <div class="menu">
+    <div class="sticky">
         <div class="flexbox-container">
-            <h1>Ocean 8d(aid)</h1>
-            <h2>menu bar</h2>
-
-
-
-
-            <div class="flexbox-flex3">
+            <h1 class="flexbox-flex1">Ocean 8'd (Aid)</h1>
+            <h2 class="flexbox-flex2">Instructions</h2>
+            <h2 class="flexbox-flex2">About</h2>
+            <div>
                 <audio id="audioBackground" controls auto loop>
                     <source src="./assets/music/music.mp3" type="audio/mp3">
                 </audio>
             </div>
-
+            
         </div>
-
     </div>
 
-
-    
 
 
     <div class="home" style="display:block">
@@ -40,7 +34,8 @@
         </div>
 
         <div>
-            <button id="start">Start Game</button>
+            <button class="button" id="start">Start Game</button>
+            <!-- <a href="#" class="button"></a> -->
         </div>
     </div>
 
@@ -51,10 +46,12 @@
         </div>
 
         <div>
-            <button id="restart">Restart Game</button>
+            <button class="button" id="restart">Restart Game</button>
+            <!-- <a href="#" class="button"></a> -->
         </div>
         <div>
-            <button id="pause">Pause Game</button>
+            <button class="button" id="pause">Pause Game</button>
+            <!-- <a href="#" class="button"></a> -->
         </div>
 
 
@@ -62,10 +59,10 @@
 
     <div>
         <img src="./assets/images/Background Pics/NYC_background.jpg" id="backpic">
-
     </div>
 
 
+    
     <div class="audio">
 
         <audio id="audioGameover" constrols>
@@ -95,6 +92,7 @@
 
 
 
+
 </body>
 </html>
 
@@ -121,3 +119,11 @@
             <br>
         </div>
     -->
+
+    <!-- <div style="text-align:center"> 
+        <br><br>
+        <video id="myvid" width="420" src="filename.mp4" type="video/mp4"> </video>
+        <button id="vidbutton">Play</button> 
+        <input id="vol-control" type="range" min="0" max="100" step="1" oninput="thisVolume(this.value)" onchange="thisVolume(this.value)"></input>
+        <div id="vol"></div>
+    </div>  -->

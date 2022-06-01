@@ -3,6 +3,7 @@
 
     //Garbage
     const arrGarbage = [];
+    window.arrGarbage = arrGarbage;
     export const Garbage = function Garbage() {
         // debugger
         this.x = Math.random() * canvasBoard.width;
