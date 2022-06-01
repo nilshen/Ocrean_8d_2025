@@ -38,7 +38,6 @@ In addition, this project will include
 
 
 ### To do list
-
 `Friday afternoon & weekend`
 - [x] setting up the canvas game board
 - [x] create moving objects:
@@ -53,12 +52,10 @@ In addition, this project will include
     - [x] garbage x monster = nothing (or maybe kill the monster?)
 
 - [X] setting up the game view with sprite
-- [ ] choose the characters: Spongebob/Patrick Star
 - [X] setting up mouse move with the player to follow
 
 `Tuesday` 
 - [X] setting up the 2D assets & music volumn function
-- [ ] setting up the theme function: day/night version
 - [x] setting up start new game, go back to homepage
 - [x] setting up pause game / resume game
 
