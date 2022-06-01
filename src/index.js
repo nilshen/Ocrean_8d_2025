@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 //game function: 10 scores for 1 life
 window.canvasBoard.addEventListener('click', function () {
-    if (score >= 10) {
+    if (score >= 10 && gameOver === false && pause === false) {
         score -= 10;
         life += 1;
         audioAddLife.play();

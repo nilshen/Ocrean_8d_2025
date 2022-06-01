@@ -7,6 +7,7 @@
 
 .body{
     position: relative;
+    margin: 0 auto;
 }
 
 .sticky {
@@ -41,15 +42,12 @@ h2 {
 }
 
 #audioBackground{
-    position:fixed;
-    right:30px;
-    top:30px;
-    width: 240px;
+    top: 10px;
+    right: 10px; 
 }
 
 .home {
     position: absolute;
-    top: 110px;
     left: 200px;
     width:1400px;
     height:800px;
@@ -90,7 +88,7 @@ h2 {
     font-family: myFont;
     font-size:xx-large;
     position: absolute;
-    bottom: 8.0%;
+    bottom: -77px;
     left: 41%;
 }
 
@@ -108,17 +106,17 @@ h2 {
 
 #backpic {
     // position: fixed;
-    display: flex;
+    // display: flex;
     // position: fixed;
-    width: 100%;
-    height:fit-content;
+    width: 1900px;
+    height:100%;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
     background-size:cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-attachment: fixed;
 }
 
 // #player{
