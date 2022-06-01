@@ -16,7 +16,7 @@
 .flexbox-container {
     position:sticky;
     display: flex;
-
+    font-family: myFont;
     flex-direction: row;
     
     justify-content:space-evenly;
@@ -28,10 +28,12 @@
 
 h1 {
     font-size:6vh;
+    font-family: myFont;
 }
 
 h2 {
     font-size:4vh;
+    font-family: myFont;
 }
 
 
