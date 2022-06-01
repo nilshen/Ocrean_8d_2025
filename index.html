@@ -11,103 +11,126 @@
 
 <body>
 
-    <div class="home" style="display:block">
-        <div class="sticky">
-            <div class="flexbox-container">
-                <h2 class="flexbox-flex2">How to Play</h2>
-                <h1 class="flexbox-flex1">Ocean 8d (Aid)</h1>
-                <h2 class="flexbox-flex3">About</h2>
-                <audio id="audioBackground">
+<div class="menu-container" style="display:block">
+    <div class="sticky">
+        <div class="flexbox-container">
+        
+
+            <h1 class="flexbox-flex1">Ocean 8d (Aid)</h1>
+            
+            <h2 class="flexbox-flex2">How to Play</h2>
+
+
+            <h2 class="flexbox-flex3">About</h2>
+
+
+            <div class="dropdown">
+                <h2 class="dropbtn">Contact</h2>
+                <div class="dropdown-content">
+                <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github Repo</a>
+                <a href="https://www.linkedin.com/in/lin-s-3460082a/">Linkedin</a>
+                </div>
+            </div>
+
+                <audio id="audioBackground" controls>
                     <source src="./assets/music/music.mp3" type="audio/mp3">
                 </audio>
-
-                <nav id="navBar">
-                    <ul>
-                        <li><a href="https://www.linkedin.com/in/lin-s-3460082a/"></a>
-                            <i class="fa-brands fa-linkedin-in fa-2x"></i>
-                        </li>
-
-                        <li><a href="https://github.com/nilshen/Ocean_8d/tree/main"></a>
-                            <!-- <i class='fab fa-github fa-spin fa-3x'></i> -->
-                            <i class='fab fa-github fa-3x'></i><br/>
-                        </li>
-
-                        <li>
-
-                        </li>
-
-                    </ul>
-                </nav>
-                
-            </div>
-            <div>
-            </div>
-        </div>
-        <div>
-            <img src="./assets/images/backgroundHome.jpeg" id="backgroundHome">
-            <canvas id="canvasHome" width="1400" height="800"></canvas>
-        </div>
-
-        <div>
-            <button class="button" id="start">Start Game</button>
-            <!-- <a href="#" class="button"></a> -->
         </div>
     </div>
 
-    <div class="board" style="display:none">
-        <div>
-            <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
-            <canvas id="canvasBoard" width="1400" height="800"></canvas>
-        </div>
+    
 
-        <div>
-            <button class="button" id="restart">Exist Game</button>
-            <!-- <a href="#" class="button"></a> -->
-        </div>
-        <div>
-            <button class="button" id="pause">Pause Game</button>
-            <!-- <a href="#" class="button"></a> -->
-        </div>
+</div>
+
+<div id="how-to-play-container" class="hidden">
+    <h5>Welcome to the World Under the Sea!</h5>
+    <div class="how-to-play-content">
+        <p>
+            Spongebob's Birthday is in 2 days, move your MOUSE around the 
+            screen to recycle any GARBAGES that are throwed into the Sea!
+
+            You will score 1 point each for the item you recycled but stay 
+            away from the SHARKS because you only have 3 lives. 
+
+            At the meantime, try not to let the GARBAGES hit the SHARKS 
+            because they are also part of the ecosystem!
+        </p>
+    </div>
+</div>
+
+<p id="about" class="hidden">
+    placeholder for about
+</p>
 
 
+
+
+<div class="home">
+    <div>
+        <img src="./assets/images/backgroundHome.jpeg" id="backgroundHome">
+        <canvas id="canvasHome" width="1400" height="800"></canvas>
     </div>
 
     <div>
-        <img src="./assets/images/Background Pics/background2.jpg" id="backpic">
+        <button class="button" id="start">Start Game</button>
     </div>
+</div>
+
+<div class="board" style="display:none">
+    <div>
+        <img src="./assets/images/backgroundGame.png" id="backgroundBoard">
+        <canvas id="canvasBoard" width="1400" height="800"></canvas>
+    </div>
+
+    <div>
+        <button class="button" id="restart">Exist Game</button>
+    </div>
+    <div>
+        <button class="button" id="pause">Pause Game</button>
+    </div>
+</div>
+
+<div>
+    <img src="./assets/images/Background Pics/background2.jpg" id="backpic">
+</div>
 
 
     
-    <div class="audio">
+<div id="audio">
 
-        <audio id="audioGameover" constrols>
-            <source src="./assets/music/gameover.wav" type="audio/wav">
-        </audio>
+    <audio id="audioGameover" constrols>
+        <source src="./assets/music/gameover.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioAddLife">
-            <source src="./assets/music/audioAddLife.wav" type="audio/wav">
-        </audio>
+    <audio id="audioAddLife">
+        <source src="./assets/music/audioAddLife.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioReduceLife">
-            <source src="./assets/music/audioReduceLife.wav" type="audio/wav">
-        </audio>
+    <audio id="audioReduceLife">
+        <source src="./assets/music/audioReduceLife.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioGarbShark">
-            <source src="./assets/music/audioGarbShark.wav" type="audio/wav">
-        </audio>
+    <audio id="audioGarbShark">
+        <source src="./assets/music/audioGarbShark.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioScore">
-            <source src="./assets/music/audioScore.wav" type="audio/wav">
-        </audio>
+    <audio id="audioScore">
+        <source src="./assets/music/audioScore.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioPause">
-            <source src="./assets/music/audioPause.wav" type="audio/wav">
-        </audio>
+    <audio id="audioPause">
+        <source src="./assets/music/audioPause.wav" type="audio/wav">
+    </audio>
 
-        <audio id="audioStart">
-            <source src="./assets/music/audioStart.wav" type="audio/wav">
-        </audio>
-    </div>
+    <audio id="audioStart">
+        <source src="./assets/music/audioStart.wav" type="audio/wav">
+    </audio>
+</div>
+
+<!-- <div>
+    <button onclick = "document.getElementById('audio').play()">Play</button>
+    <button onclick = "document.getElementById('audio').pause()">Pause</button>
+</div> -->
 
 
 
