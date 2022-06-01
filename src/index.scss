@@ -1,5 +1,9 @@
 // @import "./styles/style.scss"
-
+@font-face {
+    font-family: myFont;
+    src: url('../assets/font/Parisish.ttf') format('truetype');
+    
+}
 
 .body{
     position: relative;
@@ -35,8 +39,6 @@ h2 {
     font-size:4vh;
     font-family: myFont;
 }
-
-
 
 #audioBackground{
     position:fixed;
@@ -135,11 +137,7 @@ h2 {
 
 
 
-@font-face {
-    font-family: myFont;
-    src: url('../assets/font/Parisish.ttf') format('truetype');
-    
-}
+
 
 $color: #0cf;
 
