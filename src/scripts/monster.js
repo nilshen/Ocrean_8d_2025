@@ -124,7 +124,9 @@ export const flowMonster = function flowMonster() {
             && arrMonster[j].killLife === false) {
             life -= 1;
             arrMonster[j].killLife = true;
-            audioReduceLife.play()
+            if (soundEffect === true){    
+                audioReduceLife.play()
+            }
 
             setTimeout(() => {
                 // console.log("test delay 1 sec")

@@ -91,7 +91,9 @@
             if (arrGarbage[j].distanceGarbage(player) <= arrGarbage[j].radius + player.radius) {
                 arrGarbage.splice(j, 1);
                 score += 1;
-                audioScore.play()
+                if (soundEffect === true){    
+                    audioScore.play()
+                }
             }
         }
 
@@ -102,7 +104,9 @@
                     // arrMonster.splice(i, 1);
                     if (score > 0){
                         score -= 1;
-                        audioGarbShark.play()
+                        if (soundEffect === true){    
+                            audioGarbShark.play()
+                        }
                     }
                     arrGarbage[j].killMonster = true  //if sliced the monster, then dont need to set the boolean. 
                 }

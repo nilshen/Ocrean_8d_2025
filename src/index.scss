@@ -237,10 +237,43 @@ h2 {
     right:40px;
     opacity: 0.8;
 }
+
+//background music
+#musicOn {
+    position:absolute;
+    left: 50%;
+    top: 65px;
+    display: block;
+    z-index: 1;
+    background-color: clear;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+#musicOff {
+    position:absolute;
+    left: 50%;
+    top: 65px;
+
+    display: none;
+    z-index: 1;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+//sound effect
 #soundOn {
     position:absolute;
     left: 50%;
-    top: 30px;
+    top: 15px;
     display: block;
     z-index: 1;
     background-color: clear;
@@ -255,7 +288,7 @@ h2 {
 #soundOff {
     position:absolute;
     left: 50%;
-    top: 30px;
+    top: 15px;
 
     display: none;
     z-index: 1;
@@ -266,7 +299,6 @@ h2 {
     overflow: hidden;
     outline: none;
 }
-
 
 //audio withi controls
 // #audioBackground{

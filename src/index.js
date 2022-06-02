@@ -48,7 +48,9 @@ window.addEventListener("DOMContentLoaded", () => {
         if (score >= 10 && gameOver === false && pause === false) {
             score -= 10;
             dollar += 100;
-            audioDollar.play();
+            if (soundEffect === true) {
+                audioDollar.play();
+            }
         }
     });
 
@@ -71,7 +73,9 @@ window.addEventListener("DOMContentLoaded", () => {
     let start = false;
     gameStart.addEventListener('click', function () {
         if (start === false) {
-            audioStart.play();
+            if (soundEffect === true){
+                audioStart.play();
+            }
             start = true;
             setTimeout(() => {
                 animate();
@@ -98,7 +102,9 @@ window.addEventListener("DOMContentLoaded", () => {
         if (pause === false) {
             pause = true;
             gamePause.innerHTML = 'Resume Game';
-            audioPause.play();
+            if (soundEffect === true){    
+                audioPause.play();
+            }
         } else {
             pause = false;
             gamePause.innerHTML = 'Pause Game';
@@ -110,8 +116,9 @@ window.addEventListener("DOMContentLoaded", () => {
     function gameOverStatus() {
         if (life === 0) {
             gameOver = true;
-
-            audioGameover.play();
+            if (soundEffect === true){    
+                audioGameover.play();
+            }
             audioBackground.pause();
             if (dollar > 499) {
                 ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width / 2 - 200, canvasBoard.height / 2 - 200);
@@ -144,23 +151,38 @@ window.addEventListener("DOMContentLoaded", () => {
     window.audioGarbShark = document.getElementById("audioGarbShark");
     window.audioPause = document.getElementById("audioPause");
     window.audioStart = document.getElementById("audioStart");
-    //sound control
+    //background music control
+    const musicOn = document.getElementById('musicOn');
+    const musicOff = document.getElementById('musicOff');
+
+    musicOn.addEventListener('click', function () {
+        audioBackground.pause();
+        musicOn.style.display = "none";
+        musicOff.style.display = "block";
+    });
+
+    musicOff.addEventListener('click', function () {
+        audioBackground.play();
+        musicOn.style.display = "block";
+        musicOff.style.display = "none";
+    });
+
+    //audio effect control
     const soundOn = document.getElementById('soundOn');
     const soundOff = document.getElementById('soundOff');
+    window.soundEffect = true
 
     soundOn.addEventListener('click', function () {
-        audioBackground.pause();
+        soundEffect = false
         soundOn.style.display = "none";
         soundOff.style.display = "block";
     });
 
     soundOff.addEventListener('click', function () {
-        audioBackground.play();
+        soundEffect = true
         soundOn.style.display = "block";
         soundOff.style.display = "none";
     });
-
-
 
 
     function animate() {
