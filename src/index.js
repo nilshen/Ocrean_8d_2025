@@ -114,11 +114,11 @@ window.canvasBoard.addEventListener('click', function () {
             audioGameover.play();
             audioBackground.pause();
             if (dollar > 499) {
-                ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+                ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             } else if (dollar < 500 && dollar > 1 ){
-                ctxBoard.fillText('Great job, you recycled tons of garbages and made ' + dollar + ' dollars!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+                ctxBoard.fillText('Great job, you recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             } else (
-                ctxBoard.fillText('Nice try... You will make some money, one day!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+                ctxBoard.fillText('Nice try... You will make some money,💵 one day!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             )
         }
     }
@@ -168,11 +168,11 @@ window.canvasBoard.addEventListener('click', function () {
         //score & life 
         ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('Dollar: $' + dollar, canvasBoard.width/2 - 125, 85);
+        ctxBoard.fillText('💵: $' + dollar, canvasBoard.width/2 - 125, 85);
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('SCORE: ' + score, canvasBoard.width/2 - 125, 55);
+        ctxBoard.fillText('🗑️: ' + score, canvasBoard.width/2 - 125, 55);
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('LIVES: ' + life, canvasBoard.width/2 - 125, 25);
+        ctxBoard.fillText('❤️: ' + life, canvasBoard.width/2 - 125, 25);
         // ctxBoard.fillRect(j * 25, i * 25, 25, 25);
         // ctxBoard.fillStyle = "blue";
         // ctxBoard.font = '30px serif';
