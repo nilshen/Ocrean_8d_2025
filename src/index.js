@@ -144,34 +144,6 @@ window.canvasBoard.addEventListener('click', function () {
     window.audioPause = document.getElementById("audioPause");
     window.audioStart = document.getElementById("audioStart");
 
-    //volumn control
-    // function thisVolume(volume_value) { 
-    //     var myvideo = document.getElementById("myvid"); 
-    //     document.getElementById("vol").innerHTML=volume_value; 
-    //     myvideo.volume = volume_value / 100; 
-    // }
-    // var ppbutton = document.getElementById("vidbutton");
-    //     ppbutton.addEventListener("click", playPause);
-    //     myVideo = document.getElementById("myvid");
-    // function playPause() { 
-    //     if (myVideo.paused) {
-    //         myVideo.play();
-    //         ppbutton.innerHTML = "Pause";
-    //         }
-    //     else  {
-    //         myVideo.pause(); 
-    //         ppbutton.innerHTML = "Play";
-    //         }
-    // } 
-    // function thisVolume(volume_value)
-    //     {
-    //         var myvideo = document.getElementById("myvid");
-    //         document.getElementById("vol").innerHTML=volume_value;
-    //         myvideo.volume = volume_value / 100;
-            
-    // }
-    
-
 
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
@@ -210,13 +182,37 @@ window.canvasBoard.addEventListener('click', function () {
         window.edgePosition = canvasBoard.getBoundingClientRect();
         gameOverStatus();
         if (gameOver === false && pause === false) {
-            setTimeout(() => {
                 requestAnimationFrame(animate);
-            }, 18)
         } 
     }
-
-
-
-
 });
+
+
+
+
+
+   //volumn control
+    // function thisVolume(volume_value) { 
+    //     var myvideo = document.getElementById("myvid"); 
+    //     document.getElementById("vol").innerHTML=volume_value; 
+    //     myvideo.volume = volume_value / 100; 
+    // }
+    // var ppbutton = document.getElementById("vidbutton");
+    //     ppbutton.addEventListener("click", playPause);
+    //     myVideo = document.getElementById("myvid");
+    // function playPause() { 
+    //     if (myVideo.paused) {
+    //         myVideo.play();
+    //         ppbutton.innerHTML = "Pause";
+    //         }
+    //     else  {
+    //         myVideo.pause(); 
+    //         ppbutton.innerHTML = "Play";
+    //         }
+    // } 
+    // function thisVolume(volume_value)
+    //     {
+    //         var myvideo = document.getElementById("myvid");
+    //         document.getElementById("vol").innerHTML=volume_value;
+    //         myvideo.volume = volume_value / 100;
+    // }

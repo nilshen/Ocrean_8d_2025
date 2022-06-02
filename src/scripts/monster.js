@@ -17,8 +17,8 @@ export const Monster = function Monster() {
         this.frame = 0;
 
 
-        const random = Math.floor(Math.random() * 2 + 1);
-        switch (random) {
+        const randomL = Math.floor(Math.random() * 2 + 1);
+        switch (randomL) {
             case 1:
                 this.image = m11;
                 break;
@@ -29,7 +29,7 @@ export const Monster = function Monster() {
     }
     else if (posMonster < 4) {
         this.x = canvasBoard.width + this.radius;
-        this.speedX = (Math.random() * 20 - 9.5) / 5 + 3;
+        this.speedX = (Math.random() * -20) / 5 + 3;
         this.speedY = 0; //Math.random() * -10 / 2;
         this.spriteWidth = 608;
         this.spriteHeight = 372;
@@ -38,8 +38,8 @@ export const Monster = function Monster() {
         this.y = Math.floor(Math.random() * 7) * this.height + this.radius;
         this.frame = 0;
 
-        const random = Math.floor(Math.random() * 2 + 1);
-        switch (random) {
+        const randomR = Math.floor(Math.random() * 2 + 1);
+        switch (randomR) {
             case 1:
                 this.image = m33;
                 break;
@@ -105,7 +105,7 @@ export const flowMonster = function flowMonster() {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 100 === 0 && arrMonster.length < 10) {
+    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
