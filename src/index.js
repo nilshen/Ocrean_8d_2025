@@ -184,11 +184,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
         //score & life 
         ctxBoard.fillStyle = 'white'; //'rgb(85, 91, 95)';
-        ctxBoard.font = '28px myFont';
+        ctxBoard.font = '30px myFont';
         ctxBoard.fillText('💰: $' + dollar, canvasBoard.width / 2 - 125, 85);
-        ctxBoard.font = '28px myFont';
+        ctxBoard.font = '30px myFont';
         ctxBoard.fillText('🗑️: ' + score, canvasBoard.width / 2 - 125, 55);
-        ctxBoard.font = '28px myFont';
+        ctxBoard.font = '30px myFont';
         ctxBoard.fillText('❤️: ' + life, canvasBoard.width / 2 - 125, 25);
         // ctxBoard.fillRect(j * 25, i * 25, 25, 25);
         // ctxBoard.fillStyle = "blue";
