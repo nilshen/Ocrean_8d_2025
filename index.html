@@ -14,54 +14,48 @@
 <div class="menu-container" style="display:block">
     <div class="sticky">
         <div class="flexbox-container">
-        
+            <div class="dropdownHow">
+            <div class="dropbtnHow">  
+                <h2>How to Play</h2>
+                <div class="dropdown-contentHow">
+                <h3>Welcome to the World Under the Sea!</h3>
+                <p>
+                    Spongebob's birthday is in 2 days, move your MOUSE around the 
+                    screen to recycle any GARBAGES that are throwed into the sea!
+                    <br>
+                    <br>
+                    You will score 1 point for each item recycled but stay 
+                    away from the SHARKS because you only have 3 LIVES. 
+                    <br>
+                    <br>
+                    At the meantime, try not to let GARBAGES hit the SHARKS 
+                    because they are also part of the ecosystem!
+                    <br>
+                    <br>
+                    You may click the mouse to exchange 10 scores to 1 LIFE!
+                </p>
+                </div>
+            </div>
+            </div>
 
             <h1 class="flexbox-flex1">Ocean 8d (Aid)</h1>
-            
-            <h2 class="flexbox-flex2">How to Play</h2>
-
-
-            <h2 class="flexbox-flex3">About</h2>
-
 
             <div class="dropdown">
                 <h2 class="dropbtn">Contact</h2>
                 <div class="dropdown-content">
-                <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github Repo</a>
-                <a href="https://www.linkedin.com/in/lin-s-3460082a/">Linkedin</a>
+                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github Repo</a>
+                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">Linkedin</a>
                 </div>
             </div>
 
-                <audio id="audioBackground" controls>
-                    <source src="./assets/music/music.mp3" type="audio/mp3">
-                </audio>
         </div>
     </div>
-
     
-
 </div>
 
-<div id="how-to-play-container" class="hidden">
-    <h5>Welcome to the World Under the Sea!</h5>
-    <div class="how-to-play-content">
-        <p>
-            Spongebob's Birthday is in 2 days, move your MOUSE around the 
-            screen to recycle any GARBAGES that are throwed into the Sea!
-
-            You will score 1 point each for the item you recycled but stay 
-            away from the SHARKS because you only have 3 lives. 
-
-            At the meantime, try not to let the GARBAGES hit the SHARKS 
-            because they are also part of the ecosystem!
-        </p>
-    </div>
-</div>
-
-<p id="about" class="hidden">
-    placeholder for about
-</p>
-
+<audio id="audioBackground" controls>
+    <source src="./assets/music/music.mp3" type="audio/mp3">
+</audio>
 
 
 
@@ -70,7 +64,6 @@
         <img src="./assets/images/backgroundHome.jpeg" id="backgroundHome">
         <canvas id="canvasHome" width="1400" height="800"></canvas>
     </div>
-
     <div>
         <button class="button" id="start">Start Game</button>
     </div>
@@ -95,7 +88,6 @@
 </div>
 
 
-    
 <div id="audio">
 
     <audio id="audioGameover" constrols>
@@ -131,8 +123,6 @@
     <button onclick = "document.getElementById('audio').play()">Play</button>
     <button onclick = "document.getElementById('audio').pause()">Pause</button>
 </div> -->
-
-
 
 </body>
 </html>
