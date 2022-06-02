@@ -105,7 +105,7 @@ export const flowMonster = function flowMonster() {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
+    if (gameFrame % 100 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
