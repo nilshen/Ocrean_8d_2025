@@ -26,6 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     window.gameFrame = 0;
     window.score = 0;
+    window.dollar = 0;
     window.life = 3;
     let gameOver = false;
     // window.canvasBoard = canvasBoard
@@ -46,8 +47,8 @@ window.addEventListener("DOMContentLoaded", () => {
 window.canvasBoard.addEventListener('click', function () {
     if (score >= 10 && gameOver === false && pause === false) {
         score -= 10;
-        life += 1;
-        audioAddLife.play();
+        dollar += 100;
+        audioDollar.play();
     }
 });
 
@@ -112,12 +113,12 @@ window.canvasBoard.addEventListener('click', function () {
 
             audioGameover.play();
             audioBackground.pause();
-            if (score > 19) {
-                ctxBoard.fillText('Great job! You recycled '+ score + ' garbages!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
-            } else if (score < 20 && score > 1 ){
-                ctxBoard.fillText('Well done, you recycled '+ score + ' garbages!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+            if (dollar > 499) {
+                ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+            } else if (dollar < 500 && dollar > 1 ){
+                ctxBoard.fillText('Great job, you recycled tons of garbages and made ' + dollar + ' dollars!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             } else (
-                ctxBoard.fillText('Nice try... You recycled '+ score + ' garbage!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+                ctxBoard.fillText('Nice try... You will make some money, one day!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
             )
         }
     }
@@ -137,7 +138,7 @@ window.canvasBoard.addEventListener('click', function () {
     //sound track
     window.audioBackground = document.getElementById("audioBackground");
     window.audioGameover = document.getElementById("audioGameover");
-    window.audioAddLife = document.getElementById("audioAddLife");
+    window.audioDollar = document.getElementById("audioDollar");
     window.audioReduceLife = document.getElementById("audioReduceLife");
     window.audioScore = document.getElementById("audioScore");
     window.audioGarbShark = document.getElementById("audioGarbShark");
@@ -166,6 +167,8 @@ window.canvasBoard.addEventListener('click', function () {
 
         //score & life 
         ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
+        ctxBoard.font = '28px myFont';
+        ctxBoard.fillText('Dollar: $' + dollar, canvasBoard.width/2 - 125, 85);
         ctxBoard.font = '28px myFont';
         ctxBoard.fillText('SCORE: ' + score, canvasBoard.width/2 - 125, 55);
         ctxBoard.font = '28px myFont';

@@ -124,9 +124,9 @@ export const playerBubbleEffect = function playerBubbleEffect (player) {
         arrBubble[i].moveplayerBubble();
     }
 
-    if (gameFrame % 23 === 0) {
-        arrBubble.splice(0, 1);
-    }
+    // if (gameFrame % 23 === 0) {
+    //     arrBubble.splice(0, 1);
+    // }
 
 
     for (let i = 0; i < arrBubble.length; i++) {
