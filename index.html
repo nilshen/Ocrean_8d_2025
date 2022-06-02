@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css">
     <script src="./dist/main.js"></script>
+    <script src="https://kit.fontawesome.com/c1f5a796c7.js" crossorigin="anonymous"></script>
     <title>Ocean 8d</title>
 </head>
 
@@ -45,10 +46,25 @@
             <div class="dropdown">
                 <h2 class="dropbtn">Contact</h2>
                 <div class="dropdown-content">
-                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github Repo</a>
-                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">Linkedin</a>
+                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github</a>
+                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">LinkedIn</a>
                 </div>
             </div>
+            
+            <!-- try font awesome -->
+            <!-- <nav>
+                <div class="dropdown-content">
+                    <a href="https://github.com/nilshen/Ocean_8d/tree/main"></a>
+                    <i class="fa-brands fa-github-square"></i>
+                    <a href="https://www.linkedin.com/in/lin-s-3460082a/"></a>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+            </nav> -->
+            <!-- try font awesome -->
+            
+
+
+            
         </div>
     </div>
     
@@ -78,15 +94,24 @@
         <button class="button" id="pause">Pause Game</button>
     </div>
     
-    <audio id="audioBackground" controls>
+    <!-- <audio id="audioBackground" controls>
         <source src="./assets/music/music.mp3" type="audio/mp3">
-    </audio>
+    </audio> -->
+
 </div>
+
 
 <div>
-    <img src="./assets/images/Background Pics/background2.jpg" id="backpic">
-</div>
 
+    <div>
+        <img src="./assets/images/Background Pics/background2.jpg" id="backpic">
+    </div>
+    
+    <div id="footnotes">
+        <p>Built using Vanilla JavaScript, CSS and HTML5 Canvas &copy; Lin Shen 2022</p>
+    </div>
+
+</div>
 
 <div id="audio" muted="true">
 
@@ -123,6 +148,21 @@
     <button onclick = "document.getElementById('audio').play()">Play</button>
     <button onclick = "document.getElementById('audio').pause()">Pause</button>
 </div> -->
+
+
+
+            <!-- try font awsome -->
+
+    
+            <audio id="audioBackground">
+                <source src="./assets/music/music.mp3" type="audio/mp3">
+                <i class="fa-regular fa-volume-high" id="sound-on"></i>
+                <i class="fa-regular fa-volume-slash" id="sound-off"></i>
+            </audio>
+
+
+
+        <!-- try font awsome -->
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 // @import "./styles/style.scss";
-
+html, body{
+    overflow: hidden;
+}
 @font-face {
     font-family: myFont;
     src: url('../assets/font/Parisish.ttf') format('truetype');
@@ -175,6 +177,7 @@ h2 {
 
 #backgroundHome {
     position: absolute;
+    overflow: hidden;
     margin: 0;
     width:1420px;
     height:820px;
@@ -184,6 +187,33 @@ h2 {
     position:absolute;
     width:1420px;
     height:820px;
+    margin: 0%;
+    border: 0%;
+    overflow: hidden;
+
+}
+
+// footer{
+//     margin: 0%;
+//     border: 0%;
+//     overflow: hidden;
+//     text-align: center;
+//     padding: 0px;
+//     // background-color: rgba(82, 151, 194, 0.452);
+//     color: black
+//     font-family: myFont;
+//     z-index: 100;
+// }
+
+#footnotes{
+    width: 1900px;
+    position:absolute;
+    color:white;
+    font-family: myFont;
+    text-align: center;
+    bottom: 5%;
+    max-height: 5px;
+    font-size: x-large;
 }
 
 #start{
@@ -207,16 +237,16 @@ h2 {
     right:40px;
     opacity: 0.8;
 }
-//audio
-#audioBackground{
-    position: absolute;
-    top: 17px;
-    right: 530px;
-    width: 150px;
-    opacity: 0.8;
-    z-index: 1;
+//audio withi controls
+// #audioBackground{
+//     position: absolute;
+//     top: 17px;
+//     right: 530px;
+//     width: 150px;
+//     opacity: 0.8;
+//     z-index: 1;
     
-}
+// }
 
 #backpic {
     // position: fixed;
@@ -231,6 +261,8 @@ h2 {
     background-size:cover;
     background-repeat: no-repeat;
     // background-attachment: fixed;
+    z-index: 999;
+
 }
 
 // #player{
@@ -296,4 +328,28 @@ $color: rgb(85, 132, 172);
 }
 }
 
+// #audioBackground{
+//     position: absolute;
+//     top: 17px;
+//     right: 530px;
+//     width: 150px;
+//     opacity: 0.8;
+//     z-index: 1;
+    
+// }
 
+#sound-on {
+    position:absolute;
+    left: 65%;
+    top: 0%;
+    display: block;
+    z-index: 1;
+}
+
+#sound-off {
+    position:absolute;
+    left: 65%;
+    top: -20px;
+    display: none;
+    z-index: 1;
+}
