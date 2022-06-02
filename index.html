@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css">
     <script src="./dist/main.js"></script>
-    <script src="https://kit.fontawesome.com/c1f5a796c7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/eee90dbff9.js" crossorigin="anonymous"></script>
     <title>Ocean 8d</title>
 </head>
 
@@ -46,8 +46,8 @@
             <div class="dropdown">
                 <h2 class="dropbtn">Contact</h2>
                 <div class="dropdown-content">
-                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github</a>
-                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">LinkedIn</a>
+                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github <i class="fa-brands fa-github-square"></i></a>
+                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
             
@@ -94,9 +94,23 @@
         <button class="button" id="pause">Pause Game</button>
     </div>
     
-    <!-- <audio id="audioBackground" controls>
+    <audio id="audioBackground">
         <source src="./assets/music/music.mp3" type="audio/mp3">
-    </audio> -->
+    </audio>
+
+    <div id = audioBackground>
+        <button id="soundOn">
+            <span style="font-size: 20px; color: rgb(85, 132, 172);">
+                <i class="fa-solid fa-volume-high fa-2x" ></i>
+            </span>
+        </button>
+    
+        <button id="soundOff">
+            <span style="font-size: 20px; color: rgb(85, 132, 172);">
+                <i class="fa-solid fa-volume-off fa-2x" ></i>
+            </span>
+        </button>
+    </div>
 
 </div>
 
@@ -144,21 +158,19 @@
     </audio>
 </div>
 
-<!-- <div>
-    <button onclick = "document.getElementById('audio').play()">Play</button>
-    <button onclick = "document.getElementById('audio').pause()">Pause</button>
-</div> -->
+
+
 
 
 
             <!-- try font awsome -->
 
     
-            <audio id="audioBackground">
+            <!-- <audio id="audioBackground">
                 <source src="./assets/music/music.mp3" type="audio/mp3">
                 <i class="fa-regular fa-volume-high" id="sound-on"></i>
                 <i class="fa-regular fa-volume-slash" id="sound-off"></i>
-            </audio>
+            </audio> -->
 
 
 

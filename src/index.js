@@ -43,20 +43,20 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 
-//game function: 10 scores for 1 life
-window.canvasBoard.addEventListener('click', function () {
-    if (score >= 10 && gameOver === false && pause === false) {
-        score -= 10;
-        dollar += 100;
-        audioDollar.play();
-    }
-});
+    //game function: 10 scores for 1 life
+    window.canvasBoard.addEventListener('click', function () {
+        if (score >= 10 && gameOver === false && pause === false) {
+            score -= 10;
+            dollar += 100;
+            audioDollar.play();
+        }
+    });
 
     //home menu switch
     function show() {
         let div1 = document.querySelector('.board');
         let div2 = document.querySelector('.home');
-    
+
         if (div1.style.display == "block") {
             div1.style.display = "none";
             div2.style.display = "block";
@@ -68,17 +68,17 @@ window.canvasBoard.addEventListener('click', function () {
 
     //start game
     let gameStart = document.getElementById('start');
-    let start = false
+    let start = false;
     gameStart.addEventListener('click', function () {
         if (start === false) {
-            audioStart.play()
-            start = true
-            setTimeout(()=>{
+            audioStart.play();
+            start = true;
+            setTimeout(() => {
                 animate();
-                show()
-                audioBackground.play()
-            },1500)
-        } 
+                show();
+                audioBackground.play();
+            }, 1500);
+        }
     });
 
     //restart game
@@ -94,15 +94,15 @@ window.canvasBoard.addEventListener('click', function () {
     let pause = false;
 
     gamePause.addEventListener('click', function () {
-    
+
         if (pause === false) {
             pause = true;
-            gamePause.innerHTML = 'Resume Game'
+            gamePause.innerHTML = 'Resume Game';
             audioPause.play();
         } else {
             pause = false;
-            gamePause.innerHTML = 'Pause Game'
-            animate()
+            gamePause.innerHTML = 'Pause Game';
+            animate();
         }
     });
 
@@ -114,12 +114,12 @@ window.canvasBoard.addEventListener('click', function () {
             audioGameover.play();
             audioBackground.pause();
             if (dollar > 499) {
-                ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
-            } else if (dollar < 500 && dollar > 1 ){
-                ctxBoard.fillText('Great job, you recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
+                ctxBoard.fillText('Excellent job! You recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width / 2 - 200, canvasBoard.height / 2 - 200);
+            } else if (dollar < 500 && dollar > 1) {
+                ctxBoard.fillText('Great job, you recycled tons of garbages and made ' + dollar + ' dollars💵!', canvasBoard.width / 2 - 200, canvasBoard.height / 2 - 200);
             } else (
-                ctxBoard.fillText('Nice try... You will make some money,💵 one day!', canvasBoard.width/2 - 200, canvasBoard.height/2 - 200)
-            )
+                ctxBoard.fillText('Nice try... You will make some money,💵 one day!', canvasBoard.width / 2 - 200, canvasBoard.height / 2 - 200)
+            );
         }
     }
 
@@ -144,6 +144,23 @@ window.canvasBoard.addEventListener('click', function () {
     window.audioGarbShark = document.getElementById("audioGarbShark");
     window.audioPause = document.getElementById("audioPause");
     window.audioStart = document.getElementById("audioStart");
+    //sound control
+    const soundOn = document.getElementById('soundOn');
+    const soundOff = document.getElementById('soundOff');
+
+    soundOn.addEventListener('click', function () {
+        audioBackground.pause();
+        soundOn.style.display = "none";
+        soundOff.style.display = "block";
+    });
+
+    soundOff.addEventListener('click', function () {
+        audioBackground.play();
+        soundOn.style.display = "block";
+        soundOff.style.display = "none";
+    });
+
+
 
 
     function animate() {
@@ -166,13 +183,13 @@ window.canvasBoard.addEventListener('click', function () {
         flowmouseMove(mouseMove);
 
         //score & life 
-        ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
+        ctxBoard.fillStyle = 'white'; //'rgb(85, 91, 95)';
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('💰: $' + dollar, canvasBoard.width/2 - 125, 85);
+        ctxBoard.fillText('💰: $' + dollar, canvasBoard.width / 2 - 125, 85);
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('🗑️: ' + score, canvasBoard.width/2 - 125, 55);
+        ctxBoard.fillText('🗑️: ' + score, canvasBoard.width / 2 - 125, 55);
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('❤️: ' + life, canvasBoard.width/2 - 125, 25);
+        ctxBoard.fillText('❤️: ' + life, canvasBoard.width / 2 - 125, 25);
         // ctxBoard.fillRect(j * 25, i * 25, 25, 25);
         // ctxBoard.fillStyle = "blue";
         // ctxBoard.font = '30px serif';
@@ -185,8 +202,8 @@ window.canvasBoard.addEventListener('click', function () {
         window.edgePosition = canvasBoard.getBoundingClientRect();
         gameOverStatus();
         if (gameOver === false && pause === false) {
-                requestAnimationFrame(animate);
-        } 
+            requestAnimationFrame(animate);
+        }
     }
 });
 
@@ -195,24 +212,24 @@ window.canvasBoard.addEventListener('click', function () {
 
 
    //volumn control
-    // function thisVolume(volume_value) { 
-    //     var myvideo = document.getElementById("myvid"); 
-    //     document.getElementById("vol").innerHTML=volume_value; 
-    //     myvideo.volume = volume_value / 100; 
+    // function thisVolume(volume_value) {
+    //     var myvideo = document.getElementById("myvid");
+    //     document.getElementById("vol").innerHTML=volume_value;
+    //     myvideo.volume = volume_value / 100;
     // }
     // var ppbutton = document.getElementById("vidbutton");
     //     ppbutton.addEventListener("click", playPause);
     //     myVideo = document.getElementById("myvid");
-    // function playPause() { 
+    // function playPause() {
     //     if (myVideo.paused) {
     //         myVideo.play();
     //         ppbutton.innerHTML = "Pause";
     //         }
     //     else  {
-    //         myVideo.pause(); 
+    //         myVideo.pause();
     //         ppbutton.innerHTML = "Play";
     //         }
-    // } 
+    // }
     // function thisVolume(volume_value)
     //     {
     //         var myvideo = document.getElementById("myvid");

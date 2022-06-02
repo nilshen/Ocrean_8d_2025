@@ -220,6 +220,35 @@ h2 {
   opacity: 0.8;
 }
 
+#soundOn {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  display: block;
+  z-index: 1;
+  background-color: clear;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+#soundOff {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  display: none;
+  z-index: 1;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 #backpic {
   width: 1900px;
   height: 900px;
@@ -273,20 +302,4 @@ h2 {
 }
 .button:hover:before {
   width: 100%;
-}
-
-#sound-on {
-  position: absolute;
-  left: 65%;
-  top: 0%;
-  display: block;
-  z-index: 1;
-}
-
-#sound-off {
-  position: absolute;
-  left: 65%;
-  top: -20px;
-  display: none;
-  z-index: 1;
 }
