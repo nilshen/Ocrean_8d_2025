@@ -168,7 +168,7 @@ window.canvasBoard.addEventListener('click', function () {
         //score & life 
         ctxBoard.fillStyle =  'white' //'rgb(85, 91, 95)';
         ctxBoard.font = '28px myFont';
-        ctxBoard.fillText('💵: $' + dollar, canvasBoard.width/2 - 125, 85);
+        ctxBoard.fillText('💰: $' + dollar, canvasBoard.width/2 - 125, 85);
         ctxBoard.font = '28px myFont';
         ctxBoard.fillText('🗑️: ' + score, canvasBoard.width/2 - 125, 55);
         ctxBoard.font = '28px myFont';
