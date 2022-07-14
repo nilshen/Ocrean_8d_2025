@@ -79,6 +79,22 @@ h2 {
   opacity: 0.8;
 }
 
+@media only screen and (max-width: 1600px) {
+  .dropdown-contentHow {
+    left: -10%;
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 104px;
+    min-width: 30rem;
+    z-index: 1;
+    font-size: xx-large;
+    color: rgb(66, 66, 167);
+    background-color: white;
+    border: 20px solid rgb(66, 66, 167);
+    opacity: 0.8;
+  }
+}
 /* Show the dropdown menu on hover */
 .dropdownHow:hover .dropdown-contentHow {
   display: block;

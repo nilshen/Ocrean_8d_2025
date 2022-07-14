@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    window.FPS = 60
+    window.FPS = 80
     window.fpsInterval = 1000 / FPS
    
     //start game
@@ -200,15 +200,15 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log(gameFrame)
         console.log(fps)
         console.log(fpsInterval)
-        console.log(elapsed)
+        // console.log(elapsed)
 
 
 
-        let now = Date.now();
-        let elapsed = now - then;
+        // let now = Date.now();
+        // let elapsed = now - then;
         
-        if (elapsed > fpsInterval){
-            then = now - (elapsed % fpsInterval);
+        // if (elapsed > fpsInterval){
+        //     then = now - (elapsed % fpsInterval);
         
             //player
             flowPlayer(player);
@@ -226,7 +226,7 @@ window.addEventListener("DOMContentLoaded", () => {
             flowmouseMove(mouseMove);
             
             gameFrame++;
-        }
+        // }
 
   
 
