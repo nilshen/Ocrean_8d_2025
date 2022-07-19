@@ -9,7 +9,7 @@ export const Monster = class Monster {
     
         if (posMonster > 6) {
             this.x = 0 - this.radius;
-            this.speedX = (Math.random() * 20 - 9.5) / 5;
+            this.speedX = (Math.random() * 20 - 9.5) / 5 + 3;
             this.speedY = 0; //Math.random() * 10 / 2;
             this.spriteWidth = 608;
             this.spriteHeight = 372;
@@ -104,11 +104,11 @@ export const flowMonster = (flowMonster) => {
         arrMonster[i].drawMonster();
     }
 
-    while (arrMonster.length < 2) {
+    while (arrMonster.length < 5) {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 200 === 0 && arrMonster.length < 4) {
+    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }

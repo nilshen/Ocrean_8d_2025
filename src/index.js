@@ -1,7 +1,7 @@
-import { Garbage } from "./scripts/garbage";
+// import { Garbage } from "./scripts/garbage";
 import { flowGarbage } from "./scripts/garbage";
 
-import { Monster } from "./scripts/monster";
+// import { Monster } from "./scripts/monster";
 import { flowMonster } from "./scripts/monster";
 
 import { Player } from "./scripts/player";
@@ -179,31 +179,26 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
-    var fps = 60;
-    var now;
-    var then = Date.now();
-    var interval = 1000/fps;
-    var delta;
-
     function animate() {
+
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
-        //player
-        flowPlayer(player);
+            //player
+            flowPlayer(player);
 
-        //playerBubble
-        playerBubbleEffect(player);
+            //playerBubble
+            playerBubbleEffect(player);
 
-        // Garbage
-        flowGarbage();
-        gameFrame++;
+            // Garbage
+            flowGarbage()
 
-        // Monster
-        flowMonster();
-
-        //mouseMove
-        flowmouseMove(mouseMove);
+            // Monster
+            flowMonster()
+            
+            //mouseMove
+            flowmouseMove(mouseMove);
+            
+            gameFrame++;
 
         //score & life 
         ctxBoard.fillStyle = 'white'; //'rgb(85, 91, 95)';
@@ -217,15 +212,13 @@ window.addEventListener("DOMContentLoaded", () => {
         //for resize
         window.edgePosition = canvasBoard.getBoundingClientRect();
         
+        var fps = 80;
         //gameover
         gameOverStatus();
         if (gameOver === false && pause === false) {
-            now = Date.now();
-            delta = now - then;
-            if (delta > interval) {
-                then = now - (delta % interval);
+            setTimeout(function(){
                 requestAnimationFrame(animate);
-            }
+            }, 1000/fps)
         }
     }
 });
