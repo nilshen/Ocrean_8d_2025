@@ -1,7 +1,7 @@
-import { Garbage } from "./scripts/garbage";
+// import { Garbage } from "./scripts/garbage";
 import { flowGarbage } from "./scripts/garbage";
 
-import { Monster } from "./scripts/monster";
+// import { Monster } from "./scripts/monster";
 import { flowMonster } from "./scripts/monster";
 
 import { Player } from "./scripts/player";
@@ -68,9 +68,6 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    window.FPS = 80
-    window.fpsInterval = 1000 / FPS
-   
     //start game
     let gameStart = document.getElementById('start');
     let start = false;
@@ -181,36 +178,11 @@ window.addEventListener("DOMContentLoaded", () => {
         soundOff.style.display = "none";
     });
 
-    // let secondsPassed;
-    // let oldTimeStamp;
-   
-    // var fps = 60;
-    // var now;
-    // var then = Date.now();
-    // var fpsInterval = 1000/fps;
-    // var delta;
 
+    function animate() {
 
-    function animate(timeStamp) {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
-        // // Calculate the number of seconds passed since the last frame
-        // secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-        // oldTimeStamp = timeStamp;
-
-        // // Calculate fps
-        // fps = Math.round(1 / secondsPassed);
-
-        // console.log(gameFrame)
-        // console.log(fps)
-        // console.log(fpsInterval)
-
-        // let now = Date.now();
-        // let elapsed = now - then;
-        // console.log(elapsed)
-        // if (elapsed > fpsInterval){
-        //     then = now - (elapsed % fpsInterval);
-        
             //player
             flowPlayer(player);
 
@@ -218,23 +190,15 @@ window.addEventListener("DOMContentLoaded", () => {
             playerBubbleEffect(player);
 
             // Garbage
-            // setInterval(function(){
-                flowGarbage()
-            // }, 50)
-            
-            
+            flowGarbage()
+
             // Monster
-            // setInterval(function(){
-                flowMonster()
-            // }, 50)
+            flowMonster()
             
             //mouseMove
             flowmouseMove(mouseMove);
             
             gameFrame++;
-        // }
-
-  
 
         //score & life 
         ctxBoard.fillStyle = 'white'; //'rgb(85, 91, 95)';
@@ -248,14 +212,13 @@ window.addEventListener("DOMContentLoaded", () => {
         //for resize
         window.edgePosition = canvasBoard.getBoundingClientRect();
         
+        var fps = 80;
         //gameover
         gameOverStatus();
         if (gameOver === false && pause === false) {
-
-            // if (elapsed > fpsInterval){
-            //     then = now - (elapsed % fpsInterval);
+            setTimeout(function(){
                 requestAnimationFrame(animate);
-            // }
+            }, 1000/fps)
         }
     }
 });

@@ -1,4 +1,4 @@
-@import "./styles/style.scss";
+
 
 @font-face {
     font-family: myFont;
@@ -11,14 +11,6 @@
     margin: 0 auto;
 }
 
-.sticky {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-    color:rgb(85, 132, 172);
-    font-family: myFont;
-}
-
 .flexbox-container {
     position:sticky;
     display: flex;
@@ -29,8 +21,6 @@
     
     align-items:baseline;
 }
-
-
 
 h1 {
     font-size:6vh;
@@ -45,63 +35,6 @@ h2 {
 #audioBackground{
     top: 10px;
     right: 10px; 
-}
-
-.home {
-    position: absolute;
-    left: 200px;
-    width:1400px;
-    height:800px;
-}
-
-.board {
-    position: absolute;
-    top: 110px;
-    left: 200px;
-    width:1400px;
-    height:800px;
-}
-
-#canvasHome {
-    position: absolute;
-    margin: 0;
-    border: 13px solid rgb(223, 228, 228);
-}
-#canvasBoard {
-    position:absolute;
-    border: 13px solid rgb(223, 228, 228);
-}
-
-#backgroundHome {
-    position: absolute;
-    margin: 0;
-    width:1420px;
-    height:820px;
-}
-
-#backgroundBoard {
-    position:absolute;
-    width:1420px;
-    height:820px;
-}
-
-#start{
-    font-family: myFont;
-    font-size:xx-large;
-    position: absolute;
-    bottom: -77px;
-    left: 41%;
-}
-
-#restart{
-    position: absolute;
-    top: 14px;
-    left: 13px;
-}
-#pause{
-    position: absolute;
-    top: 14px;
-    right:-13px;
 }
 
 
@@ -119,24 +52,6 @@ h2 {
     background-repeat: no-repeat;
     // background-attachment: fixed;
 }
-
-// #player{
-//     position: absolute;
-//     top: 80px;
-//     left: 50px;
-// }
-
-// #backpic {
-//     background-image: url("adobe-252661691.jpeg");
-//     background-repeat: no-repeat;
-//     height: 100%;
-//     background-position: center;
-//     background-size: cover;
-// }
-
-
-
-
 
 $color: #0cf;
 
