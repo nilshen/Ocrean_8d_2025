@@ -31,7 +31,7 @@ export const Monster = class Monster {
         }
         else if (posMonster < 4) {
             this.x = canvasBoard.width + this.radius;
-            this.speedX = (Math.random() * -20) / 5 + 3;
+            this.speedX = -((Math.random() * 20 - 9.5) / 5 + 3);
             this.speedY = 0; //Math.random() * -10 / 2;
             this.spriteWidth = 608;
             this.spriteHeight = 372;
@@ -53,8 +53,8 @@ export const Monster = class Monster {
         else if (posMonster <= 6 && posMonster >= 4) {
             this.x = Math.random() * canvasBoard.width + 1;
             this.y = canvasBoard.height + this.radius;
-            this.speedX = (Math.random() * -20 + 9.5) / 4;
-            this.speedY = Math.random() * -10 + 5;
+            this.speedX = (Math.random() * -20 + 9.5) / 5;
+            this.speedY = -((Math.random() * 20 - 9.5) / 4 + 5);
     
             if (this.speedX < 0) {
                 this.image = m5;
