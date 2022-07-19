@@ -179,6 +179,13 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 
+
+    var fps = 60;
+    var now;
+    var then = Date.now();
+    var interval = 1000/fps;
+    var delta;
+
     function animate() {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
@@ -213,7 +220,12 @@ window.addEventListener("DOMContentLoaded", () => {
         //gameover
         gameOverStatus();
         if (gameOver === false && pause === false) {
-            requestAnimationFrame(animate);
+            now = Date.now();
+            delta = now - then;
+            if (delta > interval) {
+                then = now - (delta % interval);
+                requestAnimationFrame(animate);
+            }
         }
     }
 });
