@@ -124,9 +124,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 ctxBoard.fillText('Excellent job! You made ' + dollar + ' dollars💵! You can buy Patrick a dream gift!', canvasBoard.width / 2 - 400, canvasBoard.height / 2 - 200);
             } else if (dollar < 500 && dollar > 1) {
                 ctxBoard.fillText('Great job, you made ' + dollar + ' dollars💵! You can buy Patrick a fancy gift!', canvasBoard.width / 2 - 400, canvasBoard.height / 2 - 200);
-            } else (
+            } else {
                 ctxBoard.fillText('Nice try...Patrick will be happy even you dont have money to buy him any gifts!', canvasBoard.width / 2 - 400, canvasBoard.height / 2 - 200)
-            );
+            };
         }
     }
 
