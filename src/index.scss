@@ -148,20 +148,18 @@ h2 {
 
 
 
-
-
 .home {
     position: absolute;
-    // left: 13%;
-    width:1500px;
+    left: 10%;
+    width:1400px;
     height:800px;
 }
 
 .board {
     position: absolute;
     top: 80px;
-    // left: 13%;
-    width:1500px;
+    left: 10%;
+    width:1400px;
     height:800px;
 }
 
@@ -192,18 +190,6 @@ h2 {
     overflow: hidden;
 
 }
-
-// footer{
-//     margin: 0%;
-//     border: 0%;
-//     overflow: hidden;
-//     text-align: center;
-//     padding: 0px;
-//     // background-color: rgba(82, 151, 194, 0.452);
-//     color: black
-//     font-family: myFont;
-//     z-index: 100;
-// }
 
 #footnotes{
     width: 1900px;
@@ -300,16 +286,6 @@ h2 {
     outline: none;
 }
 
-//audio withi controls
-// #audioBackground{
-//     position: absolute;
-//     top: 17px;
-//     right: 530px;
-//     width: 150px;
-//     opacity: 0.8;
-//     z-index: 1;
-    
-// }
 
 #backpic {
     // position: fixed;
@@ -327,22 +303,6 @@ h2 {
     z-index: 999;
 
 }
-
-// #player{
-//     position: absolute;
-//     top: 80px;
-//     left: 50px;
-// }
-
-// #backpic {
-//     background-image: url("adobe-252661691.jpeg");
-//     background-repeat: no-repeat;
-//     height: 100%;
-//     background-position: center;
-//     background-size: cover;
-// }
-
-
 
 
 
@@ -390,14 +350,4 @@ $color: rgb(85, 132, 172);
     }
 }
 }
-
-// #audioBackground{
-//     position: absolute;
-//     top: 17px;
-//     right: 530px;
-//     width: 150px;
-//     opacity: 0.8;
-//     z-index: 1;
-    
-// }
 

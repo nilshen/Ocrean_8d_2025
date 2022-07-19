@@ -1,4 +1,4 @@
-@import "./styles/style.scss";
+
 
 @font-face {
     font-family: myFont;
@@ -11,14 +11,6 @@
     margin: 0 auto;
 }
 
-.sticky {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-    color:rgb(85, 132, 172);
-    font-family: myFont;
-}
-
 .flexbox-container {
     position:sticky;
     display: flex;
@@ -29,8 +21,6 @@
     
     align-items:baseline;
 }
-
-
 
 h1 {
     font-size:6vh;
@@ -62,24 +52,6 @@ h2 {
     background-repeat: no-repeat;
     // background-attachment: fixed;
 }
-
-// #player{
-//     position: absolute;
-//     top: 80px;
-//     left: 50px;
-// }
-
-// #backpic {
-//     background-image: url("adobe-252661691.jpeg");
-//     background-repeat: no-repeat;
-//     height: 100%;
-//     background-position: center;
-//     background-size: cover;
-// }
-
-
-
-
 
 $color: #0cf;
 
