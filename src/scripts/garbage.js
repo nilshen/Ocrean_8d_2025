@@ -10,7 +10,7 @@
             this.y = Math.random(); //* canvasBoard.height; 
             this.radius = 25;
             this.speedX = (Math.random() * 20 - 9.5) / 4; //goes two ways left/right  
-            this.speedY = Math.random() * 3 + 2;
+            this.speedY = Math.random() / 2;
             this.killMonster = false; //if sliced the monster, then dont need to set the boolean.
     
             const random = Math.floor(Math.random() * 8 + 1)
@@ -112,11 +112,11 @@
                 }
         }
 
-        if (gameFrame % 40 === 0) {
+        if (gameFrame % 1000 === 0) {
             arrGarbage.push(new Garbage());
         }
 
-        while (arrGarbage.length < 4) {
+        while (arrGarbage.length < 1) {
             arrGarbage.push(new Garbage());
         }
     }
