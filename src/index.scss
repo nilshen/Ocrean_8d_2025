@@ -1,4 +1,5 @@
 @import "./styles/style.scss";
+
 html, body{
     overflow: hidden;
 }
@@ -7,8 +8,6 @@ html, body{
     src: url('../assets/font/Parisish.ttf') format('truetype');
     
 }
-
-
 
 .menu-container {
 	position: relative;
@@ -168,7 +167,7 @@ h2 {
 
 .home {
     position: absolute;
-    left: 10%;
+    left: 13%;
     width:1400px;
     height:800px;
 }
@@ -176,9 +175,27 @@ h2 {
 .board {
     position: absolute;
     top: 80px;
-    left: 10%;
+    left: 13%;
     width:1400px;
     height:800px;
+}
+
+@media only screen and (max-width:1900px) {
+    .home{
+        position: absolute;
+        left: 8%;
+        width:1400px;
+        height:800px;
+    }
+}
+
+@media only screen and (max-width:1900px) {
+    .board{
+        position: absolute;
+        left: 8%;
+        width:1400px;
+        height:800px;
+    }
 }
 
 #canvasHome {

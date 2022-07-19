@@ -104,11 +104,11 @@ export const flowMonster = (flowMonster) => {
         arrMonster[i].drawMonster();
     }
 
-    while (arrMonster.length < 5) {
+    while (arrMonster.length < 3) {
         arrMonster.push(new Monster());
     }
 
-    if (gameFrame % 200 === 0 && arrMonster.length < 10) {
+    if (gameFrame % 200 === 0 && arrMonster.length < 6) {
         for (let i = 0; i < 1; i++) {
             arrMonster.push(new Monster());
         }
