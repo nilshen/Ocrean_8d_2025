@@ -74,7 +74,6 @@ window.addEventListener("DOMContentLoaded", () => {
     //start game
     let gameStart = document.getElementById('start');
     let start = false;
-    let then;
     gameStart.addEventListener('click', ()=> {
         if (start === false) {
             if (soundEffect === true){
@@ -82,7 +81,6 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             start = true;
             setTimeout(() => {
-                then = Date.now()
                 animate();
                 show();
                 audioBackground.play();
@@ -183,30 +181,33 @@ window.addEventListener("DOMContentLoaded", () => {
         soundOff.style.display = "none";
     });
 
-    let secondsPassed;
-    let oldTimeStamp;
-    let fps;
+    // let secondsPassed;
+    // let oldTimeStamp;
+   
+    // var fps = 60;
+    // var now;
+    // var then = Date.now();
+    // var fpsInterval = 1000/fps;
+    // var delta;
+
 
     function animate(timeStamp) {
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
-        // Calculate the number of seconds passed since the last frame
-        secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-        oldTimeStamp = timeStamp;
+        // // Calculate the number of seconds passed since the last frame
+        // secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+        // oldTimeStamp = timeStamp;
 
-        // Calculate fps
-        fps = Math.round(1 / secondsPassed);
+        // // Calculate fps
+        // fps = Math.round(1 / secondsPassed);
 
-        console.log(gameFrame)
-        console.log(fps)
-        console.log(fpsInterval)
-        // console.log(elapsed)
-
-
+        // console.log(gameFrame)
+        // console.log(fps)
+        // console.log(fpsInterval)
 
         // let now = Date.now();
         // let elapsed = now - then;
-        
+        // console.log(elapsed)
         // if (elapsed > fpsInterval){
         //     then = now - (elapsed % fpsInterval);
         
@@ -217,10 +218,15 @@ window.addEventListener("DOMContentLoaded", () => {
             playerBubbleEffect(player);
 
             // Garbage
-            flowGarbage();
+            // setInterval(function(){
+                flowGarbage()
+            // }, 50)
+            
             
             // Monster
-            flowMonster();
+            // setInterval(function(){
+                flowMonster()
+            // }, 50)
             
             //mouseMove
             flowmouseMove(mouseMove);
@@ -245,7 +251,11 @@ window.addEventListener("DOMContentLoaded", () => {
         //gameover
         gameOverStatus();
         if (gameOver === false && pause === false) {
+
+            // if (elapsed > fpsInterval){
+            //     then = now - (elapsed % fpsInterval);
                 requestAnimationFrame(animate);
+            // }
         }
     }
 });
