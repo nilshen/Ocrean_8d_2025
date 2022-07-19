@@ -1,4 +1,4 @@
-// @import "./styles/style.scss";
+@import "./styles/style.scss";
 html, body{
     overflow: hidden;
 }
@@ -152,16 +152,16 @@ h2 {
 
 .home {
     position: absolute;
-    left: 13%;
-    width:1400px;
+    // left: 13%;
+    width:1500px;
     height:800px;
 }
 
 .board {
     position: absolute;
     top: 80px;
-    left: 13%;
-    width:1400px;
+    // left: 13%;
+    width:1500px;
     height:800px;
 }
 

@@ -47,63 +47,6 @@ h2 {
     right: 10px; 
 }
 
-.home {
-    position: absolute;
-    left: 200px;
-    width:1400px;
-    height:800px;
-}
-
-.board {
-    position: absolute;
-    top: 110px;
-    left: 200px;
-    width:1400px;
-    height:800px;
-}
-
-#canvasHome {
-    position: absolute;
-    margin: 0;
-    border: 13px solid rgb(223, 228, 228);
-}
-#canvasBoard {
-    position:absolute;
-    border: 13px solid rgb(223, 228, 228);
-}
-
-#backgroundHome {
-    position: absolute;
-    margin: 0;
-    width:1420px;
-    height:820px;
-}
-
-#backgroundBoard {
-    position:absolute;
-    width:1420px;
-    height:820px;
-}
-
-#start{
-    font-family: myFont;
-    font-size:xx-large;
-    position: absolute;
-    bottom: -77px;
-    left: 41%;
-}
-
-#restart{
-    position: absolute;
-    top: 14px;
-    left: 13px;
-}
-#pause{
-    position: absolute;
-    top: 14px;
-    right:-13px;
-}
-
 
 #backpic {
     // position: fixed;
