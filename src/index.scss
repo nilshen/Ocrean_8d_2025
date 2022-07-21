@@ -1,8 +1,6 @@
 @import "./styles/style.scss";
 
-html, body{
-    overflow: hidden;
-}
+
 @font-face {
     font-family: myFont;
     src: url('../assets/font/Parisish.ttf') format('truetype');
@@ -227,14 +225,17 @@ h2 {
 }
 
 #footnotes{
-    width: 1900px;
-    position:absolute;
-    color:white;
+    position:relative;
+    bottom: -820px;
+    // width: 1900px;
+    // overflow:visible;
+    // display: block;
+    color:whitesmoke;
     font-family: myFont;
     text-align: center;
-    bottom: 5%;
     max-height: 5px;
     font-size: x-large;
+    z-index: 100;
 }
 
 #start{
