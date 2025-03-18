@@ -2,6 +2,7 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
     entry: [
@@ -11,7 +12,7 @@ const config = {
     output: {
         path: path.join(__dirname, 'dist'), // bundled file in dist/
         filename: 'main.js',
-        publicPath: '/Ocrean_8d_2025/'
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -33,12 +34,35 @@ const config = {
             }
         ]
     },
-    plugins: [new MiniCssExtractPlugin()]
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new CopyPlugin({
+            patterns: [
+                { from: 'index.html', to: 'index.html' },
+                { from: 'assets', to: 'assets' },
+                { from: 'favicon.png', to: 'favicon.png' }
+            ],
+        }),
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 8080,
+        hot: true,
+        open: true,
+        historyApiFallback: true,
+        devMiddleware: {
+            writeToDisk: false
+        }
+    }
 };
 
 module.exports = (env, argv) => {
     if (argv.mode === 'production') {
         config.devtool = 'source-map';
+        config.output.publicPath = '/Ocrean_8d_2025/';
     } else {
         config.devtool = 'eval-source-map';
     }

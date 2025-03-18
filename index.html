@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="main.css">
     <script src="main.js"></script>
     <script src="https://kit.fontawesome.com/eee90dbff9.js" crossorigin="anonymous"></script>
@@ -13,46 +14,49 @@
 
 <body>
 
-<div class="menu-container" style="display:block">
-    <div class="sticky">
-        <div class="flexbox-container">
-            <div class="dropdownHow">
-            <div class="dropbtnHow">  
-                <h2>How to Play</h2>
-                <div class="dropdown-contentHow">
-                <h3>Welcome to the World Under the Sea!</h3>
-                <p>
-                    Patrick Star's birthday is in 2 days. Move your MOUSE🖱️ around the 
-                    screen to collect GARBAGES🗑️ and LEFTCLICK🖱️ the mouse to recycle 10 GARBAGES for $100💰 to buy a gift for Patrick 🎁
-                    <br>
-                    <br>
-                    You will score 1 point for each item collected but stay 
-                    away from the SHARKS&#129416 because you only have 3 LIVES&#128151
-                    <br>
-                    <br>
-                    In the meantime, try not to let GARBAGES hit the SHARKS 
-                    because they are also part of the ecosystem! You will lose 1 point for each hit :(
-                    <br>
-                    <br>
-                    Let's make the world a better place🌎
-                </p>
+    <div class="menu-container" style="display:block">
+        <div class="sticky">
+            <div class="flexbox-container">
+                <div class="dropdownHow">
+                    <div class="dropbtnHow">
+                        <h2>How to Play</h2>
+                        <div class="dropdown-contentHow">
+                            <h3>Welcome to the World Under the Sea!</h3>
+                            <p>
+                                Patrick Star's birthday is in 2 days. Move your MOUSE🖱️ around the
+                                screen to collect GARBAGES🗑️ and LEFTCLICK🖱️ the mouse to recycle 10 GARBAGES for
+                                $100💰 to buy a gift for Patrick 🎁
+                                <br>
+                                <br>
+                                You will score 1 point for each item collected but stay
+                                away from the SHARKS&#129416 because you only have 3 LIVES&#128151
+                                <br>
+                                <br>
+                                In the meantime, try not to let GARBAGES hit the SHARKS
+                                because they are also part of the ecosystem! You will lose 1 point for each hit :(
+                                <br>
+                                <br>
+                                Let's make the world a better place🌎
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
 
-            <h1 class="flexbox-flex1">Ocean 8d (Aid)</h1>
-            
+                <h1 class="flexbox-flex1">Ocean 8d (Aid)</h1>
 
-            <div class="dropdown">
-                <h2 class="dropbtn">Contact</h2>
-                <div class="dropdown-content">
-                    <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github <i class="fa-brands fa-github-square"></i></a>
-                    <a href="https://www.linkedin.com/in/lin-s-3460082a/">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
+
+                <div class="dropdown">
+                    <h2 class="dropbtn">Contact</h2>
+                    <div class="dropdown-content">
+                        <a href="https://github.com/nilshen/Ocean_8d/tree/main">Github <i
+                                class="fa-brands fa-github-square"></i></a>
+                        <a href="https://www.linkedin.com/in/lin-s-3460082a/">LinkedIn <i
+                                class="fa-brands fa-linkedin"></i></a>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- try font awesome -->
-            <!-- <nav>
+
+                <!-- try font awesome -->
+                <!-- <nav>
                 <div class="dropdown-content">
                     <a href="https://github.com/nilshen/Ocean_8d/tree/main"></a>
                     <i class="fa-brands fa-github-square"></i>
@@ -60,132 +64,132 @@
                     <i class="fa-brands fa-linkedin"></i>
                 </div>
             </nav> -->
-            <!-- try font awesome -->
-            
+                <!-- try font awesome -->
 
 
-            
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="home">
+        <div>
+            <img src="assets/images/backgroundHome.jpeg" id="backgroundHome">
+            <canvas id="canvasHome" width="1400" height="800"></canvas>
+        </div>
+        <div>
+            <button class="button" id="start">Start Game</button>
+        </div>
+
+        <div>
+            <p id="footnotes">Built using Vanilla JavaScript, CSS and HTML5 Canvas &copy; Lin Shen 2022</p>
         </div>
     </div>
-    
-</div>
 
+    <div class="board" style="display:none">
+        <div>
+            <img src="assets/images/backgroundGame.png" id="backgroundBoard">
+            <canvas id="canvasBoard" width="1400" height="800"></canvas>
+        </div>
 
-<div class="home">
-    <div>
-        <img src="assets/images/backgroundHome.jpeg" id="backgroundHome">
-        <canvas id="canvasHome" width="1400" height="800"></canvas>
+        <div>
+            <button class="button" id="restart">Exit Game</button>
+        </div>
+        <div>
+            <button class="button" id="pause">Pause Game</button>
+        </div>
+
+        <audio id="audioBackground">
+            <source src="assets/music/music.mp3" type="audio/mp3">
+        </audio>
+
+        <div id=audioBackground>
+            <button id="musicOn">
+                <span style="font-size: 20px; color: rgb(85, 132, 172);">
+                    <i class="fa-solid fa-volume-high fa-2x"></i>
+                </span>
+            </button>
+
+            <button id="musicOff">
+                <span style="font-size: 20px; color: rgb(85, 132, 172);">
+                    <i class="fa-solid fa-volume-off fa-2x"></i>
+                </span>
+            </button>
+        </div>
+
+        <!-- audio effect -->
+        <div id=audioEffect>
+            <button id="soundOn">
+                <span style="font-size: 40px; color: rgb(85, 132, 172);">
+                    <i class="fa-solid fa-volume-low"></i>
+                </span>
+            </button>
+
+            <button id="soundOff">
+                <span style="font-size: 40px; color: rgb(85, 132, 172);">
+                    <i class="fa-solid fa-volume-xmark"></i>
+                </span>
+            </button>
+        </div>
+        <!-- audio effect -->
+
     </div>
-    <div>
-        <button class="button" id="start">Start Game</button>
-    </div>
-
-    <div >
-        <p id="footnotes">Built using Vanilla JavaScript, CSS and HTML5 Canvas &copy; Lin Shen 2022</p>
-    </div>
-</div>
-
-<div class="board" style="display:none">
-    <div>
-        <img src="assets/images/backgroundGame.png" id="backgroundBoard">
-        <canvas id="canvasBoard" width="1400" height="800"></canvas>
-    </div>
-
-    <div>
-        <button class="button" id="restart">Exit Game</button>
-    </div>
-    <div>
-        <button class="button" id="pause">Pause Game</button>
-    </div>
-    
-    <audio id="audioBackground">
-        <source src="assets/music/music.mp3" type="audio/mp3">
-    </audio>
-
-    <div id = audioBackground>
-        <button id="musicOn">
-            <span style="font-size: 20px; color: rgb(85, 132, 172);">
-                <i class="fa-solid fa-volume-high fa-2x" ></i>
-            </span>
-        </button>
-    
-        <button id="musicOff">
-            <span style="font-size: 20px; color: rgb(85, 132, 172);">
-                <i class="fa-solid fa-volume-off fa-2x" ></i>
-            </span>
-        </button>
-    </div>
-
-    <!-- audio effect -->
-    <div id = audioEffect>
-        <button id="soundOn">
-            <span style="font-size: 40px; color: rgb(85, 132, 172);">
-                <i class="fa-solid fa-volume-low"></i>
-            </span>
-        </button>
-    
-        <button id="soundOff">
-            <span style="font-size: 40px; color: rgb(85, 132, 172);">
-                <i class="fa-solid fa-volume-xmark"></i>
-            </span>
-        </button>
-    </div>
-    <!-- audio effect -->
-
-</div>
 
 
-
-<div>
 
     <div>
-        <img src="assets/images/Background Pics/background2.jpg" id="backpic">
+
+        <div>
+            <img src="assets/images/Background Pics/background2.jpg" id="backpic">
+        </div>
+
+
+
     </div>
-    
 
+    <div id="audio" muted="true">
 
-</div>
+        <audio id="audioGameover">
+            <source src="assets/music/gameover.wav" type="audio/wav">
+        </audio>
 
-<div id="audio" muted="true">
+        <audio id="audioDollar">
+            <source src="assets/music/audioDollar.mp3" type="audio/wav">
+        </audio>
 
-    <audio id="audioGameover">
-        <source src="assets/music/gameover.wav" type="audio/wav">
-    </audio>
+        <audio id="audioReduceLife">
+            <source src="assets/music/audioReduceLife.wav" type="audio/wav">
+        </audio>
 
-    <audio id="audioDollar">
-        <source src="assets/music/audioDollar.mp3" type="audio/wav">
-    </audio>
+        <audio id="audioGarbShark">
+            <source src="assets/music/audioGarbShark.wav" type="audio/wav">
+        </audio>
 
-    <audio id="audioReduceLife">
-        <source src="assets/music/audioReduceLife.wav" type="audio/wav">
-    </audio>
+        <audio id="audioScore">
+            <source src="assets/music/audioScore.wav" type="audio/wav">
+        </audio>
 
-    <audio id="audioGarbShark">
-        <source src="assets/music/audioGarbShark.wav" type="audio/wav">
-    </audio>
+        <audio id="audioPause">
+            <source src="assets/music/audioPause.wav" type="audio/wav">
+        </audio>
 
-    <audio id="audioScore">
-        <source src="assets/music/audioScore.wav" type="audio/wav">
-    </audio>
-
-    <audio id="audioPause">
-        <source src="assets/music/audioPause.wav" type="audio/wav">
-    </audio>
-
-    <audio id="audioStart">
-        <source src="assets/music/audioStart.wav" type="audio/wav">
-    </audio>
-</div>
+        <audio id="audioStart">
+            <source src="assets/music/audioStart.wav" type="audio/wav">
+        </audio>
+    </div>
 
 
 
 
 
 
-            <!-- try font awsome -->
+    <!-- try font awsome -->
 
-    
-            <!-- <audio id="audioBackground">
+
+    <!-- <audio id="audioBackground">
                 <source src="./assets/music/music.mp3" type="audio/mp3">
                 <i class="fa-regular fa-volume-high" id="sound-on"></i>
                 <i class="fa-regular fa-volume-slash" id="sound-off"></i>
@@ -193,28 +197,29 @@
 
 
 
-        <!-- try font awsome -->
+    <!-- try font awsome -->
 
 </body>
+
 </html>
 
 
 
-        <!-- <div class="theme"> Theme Switcher 
+<!-- <div class="theme"> Theme Switcher 
             <div> -->
 
-            <!-- </div> -->
-            
-            <!-- <div>
+<!-- </div> -->
+
+<!-- <div>
                 <img src="./assets/images/backgroundNight.webp" id="background">
                 <canvas id="canvasBoardNight"></canvas>
             </div> -->
 
-        <!-- </div> -->
+<!-- </div> -->
 
 
 
-            <!-- <div id="player">Choose Your Player <br>
+<!-- <div id="player">Choose Your Player <br>
             <input type="radio" name="player" value="Spongebob" checked>Spongebob 
             <br>
             <input type="radio" name="player" value="PatrickStar">Patrick Star 
@@ -222,7 +227,7 @@
         </div>
     -->
 
-    <!-- <div style="text-align:center"> 
+<!-- <div style="text-align:center"> 
         <br><br>
         <video id="myvid" width="420" src="filename.mp4" type="video/mp4"> </video>
         <button id="vidbutton">Play</button> 
