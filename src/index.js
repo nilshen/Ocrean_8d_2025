@@ -12,15 +12,21 @@ import { playerBubbleEffect } from "./scripts/player";
 
 import { flowmouseMove, MouseMove } from "./scripts/mouseMove";
 
-window.addEventListener("DOMContentLoaded", () => {
+import { GAME_CONFIG } from './config/gameConfig';
+import { Game } from './core/Game';
 
-    document.canvasBoard = document.getElementById("canvasBoard");
-    canvasBoard.width = 1400;
-    canvasBoard.height = 800;
-    window.ctxBoard = canvasBoard.getContext('2d');
+window.addEventListener("DOMContentLoaded", () => {
+    // Initialize canvas
+    const canvasBoard = document.getElementById("canvasBoard");
+    canvasBoard.width = GAME_CONFIG.CANVAS.WIDTH;
+    canvasBoard.height = GAME_CONFIG.CANVAS.HEIGHT;
+
+    // Create and initialize game
+    const game = new Game(canvasBoard);
+    game.initialize();
 
     window.edgePosition = canvasBoard.getBoundingClientRect();
-    window.addEventListener('resize', ()=> {
+    window.addEventListener('resize', () => {
         window.edgePosition = canvasBoard.getBoundingClientRect();
     });
 
@@ -44,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     //game function: 10 scores for 1 life
-    window.canvasBoard.addEventListener('click',  () =>{
+    window.canvasBoard.addEventListener('click', () => {
         if (score >= 10 && gameOver === false && pause === false) {
             score -= 10;
             dollar += 100;
@@ -71,9 +77,9 @@ window.addEventListener("DOMContentLoaded", () => {
     //start game
     let gameStart = document.getElementById('start');
     let start = false;
-    gameStart.addEventListener('click', ()=> {
+    gameStart.addEventListener('click', () => {
         if (start === false) {
-            if (soundEffect === true){
+            if (soundEffect === true) {
                 audioStart.play();
             }
             start = true;
@@ -87,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //restart game
     let gameRestart = document.getElementById('restart');
-    gameRestart.addEventListener('click', ()=> {
+    gameRestart.addEventListener('click', () => {
         if (start === true) {
             window.location.reload();
         }
@@ -97,12 +103,12 @@ window.addEventListener("DOMContentLoaded", () => {
     let gamePause = document.getElementById('pause');
     let pause = false;
 
-    gamePause.addEventListener('click', ()=> {
+    gamePause.addEventListener('click', () => {
 
         if (pause === false) {
             pause = true;
             gamePause.innerHTML = 'Resume Game';
-            if (soundEffect === true){    
+            if (soundEffect === true) {
                 audioPause.play();
             }
         } else {
@@ -116,7 +122,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function gameOverStatus() {
         if (life === 0) {
             gameOver = true;
-            if (soundEffect === true){    
+            if (soundEffect === true) {
                 audioGameover.play();
             }
             audioBackground.pause();
@@ -149,13 +155,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const musicOn = document.getElementById('musicOn');
     const musicOff = document.getElementById('musicOff');
 
-    musicOn.addEventListener('click', ()=> {
+    musicOn.addEventListener('click', () => {
         audioBackground.pause();
         musicOn.style.display = "none";
         musicOff.style.display = "block";
     });
 
-    musicOff.addEventListener('click', ()=> {
+    musicOff.addEventListener('click', () => {
         audioBackground.play();
         musicOn.style.display = "block";
         musicOff.style.display = "none";
@@ -164,16 +170,16 @@ window.addEventListener("DOMContentLoaded", () => {
     //audio effect control
     const soundOn = document.getElementById('soundOn');
     const soundOff = document.getElementById('soundOff');
-    window.soundEffect = true
+    window.soundEffect = true;
 
-    soundOn.addEventListener('click', ()=> {
-        soundEffect = false
+    soundOn.addEventListener('click', () => {
+        soundEffect = false;
         soundOn.style.display = "none";
         soundOff.style.display = "block";
     });
 
-    soundOff.addEventListener('click', ()=> {
-        soundEffect = true
+    soundOff.addEventListener('click', () => {
+        soundEffect = true;
         soundOn.style.display = "block";
         soundOff.style.display = "none";
     });
@@ -183,22 +189,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
         ctxBoard.clearRect(0, 0, canvasBoard.width, canvasBoard.height);
 
-            //player
-            flowPlayer(player);
+        //player
+        flowPlayer(player);
 
-            //playerBubble
-            playerBubbleEffect(player);
+        //playerBubble
+        playerBubbleEffect(player);
 
-            // Garbage
-            flowGarbage()
+        // Garbage
+        flowGarbage();
 
-            // Monster
-            flowMonster()
-            
-            //mouseMove
-            flowmouseMove(mouseMove);
-            
-            gameFrame++;
+        // Monster
+        flowMonster();
+
+        //mouseMove
+        flowmouseMove(mouseMove);
+
+        gameFrame++;
 
         //score & life 
         ctxBoard.fillStyle = 'white'; //'rgb(85, 91, 95)';
@@ -211,14 +217,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
         //for resize
         window.edgePosition = canvasBoard.getBoundingClientRect();
-        
+
         var fps = 60;
         //gameover
         gameOverStatus();
         if (gameOver === false && pause === false) {
-            setTimeout(function(){
+            setTimeout(function () {
                 requestAnimationFrame(animate);
-            }, 1000/fps)
+            }, 1000 / fps);
         }
     }
 });
